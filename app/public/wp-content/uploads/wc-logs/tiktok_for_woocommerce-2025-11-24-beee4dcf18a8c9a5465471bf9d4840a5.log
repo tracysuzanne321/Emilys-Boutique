@@ -1,0 +1,60 @@
+2025-11-24T00:41:43+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T00:41:43+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T00:55:36+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: hit AddToCart
+2025-11-24T00:55:36+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: Missing option "access_token"
+2025-11-24T00:55:41+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: hit InitiateCheckout
+2025-11-24T00:55:41+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: Missing option "access_token"
+2025-11-24T00:55:48+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: hit InitiateCheckout
+2025-11-24T00:55:48+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: Missing option "access_token"
+2025-11-24T01:17:26+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T01:17:26+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T01:40:27+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: hit InitiateCheckout
+2025-11-24T01:40:27+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: Missing option "access_token"
+2025-11-24T01:40:45+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: hit AddToCart
+2025-11-24T01:40:45+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: Missing option "access_token"
+2025-11-24T01:40:54+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: hit InitiateCheckout
+2025-11-24T01:40:54+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: Missing option "access_token"
+2025-11-24T01:41:40+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: hit AddToCart
+2025-11-24T01:41:40+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: Missing option "access_token"
+2025-11-24T01:41:44+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: hit AddToCart
+2025-11-24T01:41:44+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: Missing option "access_token"
+2025-11-24T01:43:49+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: hit InitiateCheckout
+2025-11-24T01:43:49+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: Missing option "access_token"
+2025-11-24T01:46:11+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: hit InitiateCheckout
+2025-11-24T01:46:11+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: Missing option "access_token"
+2025-11-24T01:46:18+00:00 DEBUG Tt4b_Pixel_Class::inject_purchase_event: hit Purchase
+2025-11-24T01:46:18+00:00 DEBUG Tt4b_Pixel_Class::inject_purchase_event: Missing option "access_token"
+2025-11-24T08:04:33+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: hit AddToCart
+2025-11-24T08:04:33+00:00 DEBUG Tt4b_Pixel_Class::inject_add_to_cart_event: Missing option "access_token"
+2025-11-24T08:04:42+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: hit InitiateCheckout
+2025-11-24T08:04:42+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: Missing option "access_token"
+2025-11-24T08:11:12+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: hit InitiateCheckout
+2025-11-24T08:11:12+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: Missing option "access_token"
+2025-11-24T08:13:31+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:13:31+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:14:07+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:14:07+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:19:40+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: hit InitiateCheckout
+2025-11-24T08:19:40+00:00 DEBUG Tt4b_Pixel_Class::inject_initiate_checkout_event: Missing option "access_token"
+2025-11-24T08:22:37+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:22:37+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:24:19+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:24:19+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:24:31+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:24:31+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:24:47+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:24:47+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:25:16+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:25:16+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:25:26+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:25:26+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:25:27+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:25:27+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:25:27+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:25:27+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:25:28+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:25:28+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:25:47+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:25:47+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
+2025-11-24T08:26:03+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: hit ViewContent
+2025-11-24T08:26:03+00:00 DEBUG Tt4b_Pixel_Class::inject_view_content_event: Missing option "access_token"
