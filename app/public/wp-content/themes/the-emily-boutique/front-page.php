@@ -39,7 +39,7 @@ get_header();
 			</div>
 		</div>
 		<div class="hero-image">
-			<img src="<?php echo esc_url( get_template_directory_uri() . '/images/Emily Logo.png' ); ?>" alt="<?php esc_attr_e( 'Emily Logo', 'the-emily-boutique' ); ?>" class="hero-logo-image" />
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/images/Emily logo.png' ); ?>" alt="<?php esc_attr_e( 'Emily Logo', 'the-emily-boutique' ); ?>" class="hero-logo-image" />
 		</div>
 	</div>
 </section>
@@ -77,7 +77,7 @@ get_header();
 			
 			<div class="category-card">
 				<h3><?php esc_html_e( 'Beads', 'the-emily-boutique' ); ?></h3>
-				<p><?php esc_html_e( 'Beautiful handpicked beads for your creative projects. From delicate glass beads to natural stones, find the perfect addition to your collection.', 'the-emily-boutique' ); ?></p>
+				<p><?php esc_html_e( 'Handmade earrings, bracelets and accessories, created with beautiful beads and thoughtful details. Treat yourself or find a sweet little gift for someone special' ); ?></p>
 				<a href="<?php echo esc_url( $beads_url ); ?>" class="btn btn-primary">
 					<?php esc_html_e( 'Shop Beads', 'the-emily-boutique' ); ?>
 				</a>
@@ -85,10 +85,9 @@ get_header();
 			
 			<div class="category-card">
 				<h3><?php esc_html_e( 'Prints', 'the-emily-boutique' ); ?></h3>
-				<p><?php esc_html_e( 'Elegant art prints featuring floral designs and feminine aesthetics. Perfect for adding a touch of beauty to any space.', 'the-emily-boutique' ); ?></p>
+				<p><?php esc_html_e( 'Elegant personalised art prints featuring floral details and feminine design elements. Perfect for adding a beautiful, delicate touch to any space.', 'the-emily-boutique' ); ?></p>
 				<a href="<?php echo esc_url( $prints_url ); ?>" class="btn btn-primary">
-					<?php esc_html_e( 'Shop Prints', 'the-emily-boutique' ); ?>
-				</a>
+					<?php esc_html_e( 'Shop Prints', 'the-emily-boutique' ); ?></a>
 			</div>
 		</div>
 	</section>
@@ -121,7 +120,7 @@ get_header();
 				'posts_per_page' => 4,
 				'meta_key'       => '_featured',
 				'meta_value'     => 'yes',
-				'orderby'          => 'date',
+				'orderby'        => 'date',
 				'order'          => 'DESC',
 			);
 			

@@ -69,11 +69,52 @@
 	}
 
 	/**
+	 * Scroll Fade-In Animation
+	 */
+	function initScrollFadeIn() {
+		// Sections to animate
+		const sections = document.querySelectorAll('.hero-section, .featured-categories, .about-teaser, .featured-products');
+		
+		if (sections.length === 0) {
+			return;
+		}
+		
+		// Create Intersection Observer
+		const observerOptions = {
+			root: null,
+			rootMargin: '0px 0px -100px 0px',
+			threshold: 0.1
+		};
+		
+		const observer = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('fade-in');
+					// Unobserve after animation to improve performance
+					observer.unobserve(entry.target);
+				}
+			});
+		}, observerOptions);
+		
+		// Observe each section
+		sections.forEach(function(section) {
+			observer.observe(section);
+		});
+		
+		// Trigger hero section immediately on load (since it's above the fold)
+		const heroSection = document.querySelector('.hero-section');
+		if (heroSection && window.innerHeight > heroSection.getBoundingClientRect().top) {
+			heroSection.classList.add('fade-in');
+		}
+	}
+
+	/**
 	 * Initialize when DOM is ready
 	 */
 	function init() {
 		initMobileMenu();
 		initMobileDropdowns();
+		initScrollFadeIn();
 	}
 
 	// Run when DOM is ready
