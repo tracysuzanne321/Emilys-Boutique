@@ -1729,18 +1729,18 @@ body.tax-product_tag .site-main .woocommerce {
 	color: var(--color-deep-rose);
 	text-decoration: none;
 	border-radius: 50%;
-	transition: all 0.3s ease;
 	font-size: 1.25rem;
 	line-height: 1;
 	margin-left: auto;
 	flex-shrink: 0;
+	transform-origin: center center;
+	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .wc-block-cart-item__remove-link:hover,
 .wp-block-woocommerce-cart-line-items-block .wc-block-cart-item__remove-link:hover {
 	background-color: var(--color-deep-rose);
 	color: var(--color-white);
-	transform: rotate(90deg);
 }
 
 /* Cart Totals Block */
