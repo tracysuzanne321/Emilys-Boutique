@@ -164,3 +164,12 @@ function the_emily_boutique_cart_fragment( $fragments ) {
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'the_emily_boutique_cart_fragment' );
 
+/**
+ * Change "Add to Cart" button text to "Add to Basket"
+ */
+function the_emily_boutique_add_to_cart_text( $text ) {
+	return __( 'Add to Basket', 'the-emily-boutique' );
+}
+add_filter( 'woocommerce_product_add_to_cart_text', 'the_emily_boutique_add_to_cart_text' );
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'the_emily_boutique_add_to_cart_text' );
+
