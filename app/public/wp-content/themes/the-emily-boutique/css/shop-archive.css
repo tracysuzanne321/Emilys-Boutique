@@ -32,6 +32,7 @@
 	max-width: 1200px;
 	margin: 0 auto;
 	height: 100%;
+	
 }
 
 .product:hover {
@@ -64,16 +65,16 @@
 	font-size: 1.125rem;
 	margin-bottom: var(--spacing-sm);
 	grid-row: 3;
+	padding: 20px var(--spacing-md) !important;
 }
 
 .product .button,
 .woocommerce ul.products li.product .button,
 .woocommerce ul.products li.product a.button {
-	grid-row: 4;
+	grid-row: 5;
 	display: block;
 	width: calc(100% - var(--spacing-md) * 2);
-	margin: 0 var(--spacing-md) var(--spacing-md);
-	margin-top: 20px;
+	margin: var(--spacing-md) var(--spacing-md) var(--spacing-md);
 	text-align: center;
 	background-color: var(--color-navy) !important;
 	color: var(--color-white) !important;
@@ -85,7 +86,7 @@
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 	transition: all 0.3s ease;
-	flex-shrink: 0;
+	align-self: end;
 }
 
 /* Remove checkmark/tick icon from add to cart button */
