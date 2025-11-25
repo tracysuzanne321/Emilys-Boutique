@@ -1,0 +1,21 @@
+/* ============================================
+   Scroll Fade-In Animations
+   ============================================ */
+
+.hero-section,
+.featured-categories,
+.about-teaser,
+.featured-products {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero-section.fade-in,
+.featured-categories.fade-in,
+.about-teaser.fade-in,
+.featured-products.fade-in {
+	opacity: 1;
+	transform: translateY(0);
+}
+

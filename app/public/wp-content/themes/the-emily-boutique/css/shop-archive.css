@@ -1,0 +1,132 @@
+/* ============================================
+   Shop Archive Page
+   ============================================ */
+
+/* Shop Archive Header */
+.woocommerce-products-header {
+	max-width: 1200px;
+	margin: 0 auto var(--spacing-xl);
+	padding: 0 var(--container-padding);
+	text-align: center;
+}
+
+.woocommerce-products-header h1 {
+	margin-bottom: var(--spacing-sm);
+}
+
+/* Products Grid */
+.products {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: var(--spacing-lg);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.product {
+	background-color: var(--color-white);
+	border-radius: var(--radius-md);
+	overflow: hidden;
+	box-shadow: var(--shadow-soft);
+	max-width: 1200px;
+	margin: 0 auto;
+	height: 100%;
+}
+
+.product:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow-medium);
+}
+
+.product img {
+	width: 100%;
+	height: auto;
+	grid-row: 1;
+}
+
+.product .woocommerce-loop-product__link {
+	display: block;
+	grid-row: 1;
+}
+
+.product .woocommerce-loop-product__title {
+	font-family: var(--font-heading);
+	font-size: 1.25rem;
+	margin: var(--spacing-sm) 0;
+	padding: 0 var(--spacing-md);
+	grid-row: 2;
+}
+
+.product .price {
+	color: var(--color-deep-rose);
+	font-weight: 600;
+	font-size: 1.125rem;
+	margin-bottom: var(--spacing-sm);
+	grid-row: 3;
+}
+
+.product .button,
+.woocommerce ul.products li.product .button,
+.woocommerce ul.products li.product a.button {
+	grid-row: 4;
+	display: block;
+	width: calc(100% - var(--spacing-md) * 2);
+	margin: 0 var(--spacing-md) var(--spacing-md);
+	margin-top: 20px;
+	text-align: center;
+	background-color: var(--color-navy) !important;
+	color: var(--color-white) !important;
+	border: 2px solid var(--color-navy) !important;
+	border-radius: var(--radius-sm);
+	padding: 12px 24px;
+	font-family: var(--font-body);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	transition: all 0.3s ease;
+	flex-shrink: 0;
+}
+
+/* Remove checkmark/tick icon from add to cart button */
+.product .button::before,
+.product .button::after,
+.woocommerce ul.products li.product .button::before,
+.woocommerce ul.products li.product .button::after,
+.woocommerce ul.products li.product a.button::before,
+.woocommerce ul.products li.product a.button::after {
+	display: none !important;
+	content: none !important;
+}
+
+.product .button svg,
+.woocommerce ul.products li.product .button svg,
+.woocommerce ul.products li.product a.button svg,
+.product .button .wc-block-components-icon,
+.woocommerce ul.products li.product .button .wc-block-components-icon {
+	display: none !important;
+}
+
+.product .button .icon,
+.woocommerce ul.products li.product .button .icon,
+.woocommerce ul.products li.product a.button .icon,
+.product .button [class*="icon"],
+.woocommerce ul.products li.product .button [class*="icon"],
+.woocommerce ul.products li.product a.button [class*="icon"],
+.product .button [class*="check"],
+.woocommerce ul.products li.product .button [class*="check"],
+.woocommerce ul.products li.product a.button [class*="check"] {
+	display: none !important;
+}
+
+.product .button:hover,
+.product .button:focus,
+.woocommerce ul.products li.product .button:hover,
+.woocommerce ul.products li.product .button:focus,
+.woocommerce ul.products li.product a.button:hover,
+.woocommerce ul.products li.product a.button:focus {
+	background-color: var(--color-gold) !important;
+	color: var(--color-navy) !important;
+	border-color: var(--color-gold) !important;
+}
+

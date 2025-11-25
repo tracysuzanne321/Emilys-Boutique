@@ -1,0 +1,44 @@
+/* ============================================
+   WooCommerce Checkout Page
+   ============================================ */
+
+.wp-block-woocommerce-checkout {
+	background-color: var(--color-white);
+	border-radius: var(--radius-lg);
+	box-shadow: 0 8px 24px rgba(45, 58, 83, 0.15);
+	margin-bottom: var(--spacing-md);
+	border: 1px solid rgba(217, 176, 102, 0.2);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	padding: var(--spacing-lg);
+}
+
+.wc-block-components-button {
+	background-color: var(--color-navy);
+	color: var(--color-white);
+	border: 2px solid var(--color-navy);
+	border-radius: var(--radius-sm);
+	padding: 12px 24px;
+	font-family: var(--font-body);
+	font-weight: 600;
+}
+
+.wc-block-components-button:hover {
+	background-color: var(--color-gold);
+	color: var(--color-navy);
+	border: 2px solid var(--color-gold);
+}
+
+/* ============================================
+   Order Received Page
+   ============================================ */
+
+.woocommerce-order {
+	background-color: var(--color-white);
+	border-radius: var(--radius-lg);
+	box-shadow: 0 8px 24px rgba(45, 58, 83, 0.15);
+	margin-bottom: var(--spacing-md);
+	border: 1px solid rgba(217, 176, 102, 0.2);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	padding: var(--spacing-lg);
+}
+

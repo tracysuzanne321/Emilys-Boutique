@@ -189,3 +189,32 @@ function the_emily_boutique_remove_checkmark_from_button( $args, $product ) {
 }
 add_filter( 'woocommerce_loop_add_to_cart_args', 'the_emily_boutique_remove_checkmark_from_button', 10, 2 );
 
+/**
+ * Remove product categories and tags from single product page
+ */
+function the_emily_boutique_remove_product_meta() {
+	// Only run on single product pages
+	if ( ! is_product() ) {
+		return;
+	}
+	
+	// Remove the product meta section (which includes categories and tags)
+	// This removes the entire product_meta section that displays categories and tags
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+}
+add_action( 'wp', 'the_emily_boutique_remove_product_meta' );
+
+/**
+ * Remove Description and Reviews tabs from single product page
+ */
+function the_emily_boutique_remove_product_tabs( $tabs ) {
+	// Remove Description tab (long description)
+	unset( $tabs['description'] );
+	
+	// Remove Reviews tab
+	unset( $tabs['reviews'] );
+	
+	return $tabs;
+}
+add_filter( 'woocommerce_product_tabs', 'the_emily_boutique_remove_product_tabs', 98 );
+
