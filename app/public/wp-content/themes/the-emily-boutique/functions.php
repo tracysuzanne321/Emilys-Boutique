@@ -129,13 +129,15 @@ function the_emily_boutique_header_cart() {
 	$cart_url = wc_get_cart_url();
 	
 	?>
-	<a class="teb-cart-link" href="<?php echo esc_url( $cart_url ); ?>" aria-label="<?php esc_attr_e( 'View cart', 'the-emily-boutique' ); ?>">
+	<a class="teb-cart-link" href="<?php echo esc_url( $cart_url ); ?>" aria-label="<?php esc_attr_e( 'View basket', 'the-emily-boutique' ); ?>">
 		<span class="teb-cart-icon">
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M7 18C5.9 18 5.01 18.9 5.01 20C5.01 21.1 5.9 22 7 22C8.1 22 9 21.1 9 20C9 18.9 8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.25 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H16.55C17.3 13 17.96 12.59 18.3 11.97L21.88 5.48C22.25 4.82 21.78 4 21.01 4H5.21L4.27 2H1V2ZM17 18C15.9 18 15.01 18.9 15.01 20C15.01 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20C19 18.9 18.1 18 17 18Z" fill="currentColor"/>
+			<svg width="24" height="24" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M320 64C326.6 64 332.9 66.7 337.4 71.5L481.4 223.5L481.9 224L560 224C577.7 224 592 238.3 592 256C592 270.5 582.4 282.7 569.2 286.7L523.1 493.9C516.6 523.2 490.6 544 460.6 544L179.3 544C149.3 544 123.3 523.2 116.8 493.9L70.8 286.7C57.6 282.8 48 270.5 48 256C48 238.3 62.3 224 80 224L158.1 224L158.6 223.5L302.6 71.5C307.1 66.7 313.4 64 320 64zM320 122.9L224.2 224L415.8 224L320 122.9zM240 328C240 314.7 229.3 304 216 304C202.7 304 192 314.7 192 328L192 440C192 453.3 202.7 464 216 464C229.3 464 240 453.3 240 440L240 328zM320 304C306.7 304 296 314.7 296 328L296 440C296 453.3 306.7 464 320 464C333.3 464 344 453.3 344 440L344 328C344 314.7 333.3 304 320 304zM448 328C448 314.7 437.3 304 424 304C410.7 304 400 314.7 400 328L400 440C400 453.3 410.7 464 424 464C437.3 464 448 453.3 448 440L448 328z" fill="currentColor"/>
 			</svg>
 		</span>
-		<span class="teb-cart-count"><?php echo esc_html( $cart_count ); ?></span>
+		<?php if ( $cart_count > 0 ) : ?>
+			<span class="teb-cart-count"><?php echo esc_html( $cart_count ); ?></span>
+		<?php endif; ?>
 	</a>
 	<?php
 }
@@ -155,9 +157,11 @@ function the_emily_boutique_cart_fragment( $fragments ) {
 	// Also update just the count
 	$cart_count = WC()->cart->get_cart_contents_count();
 	ob_start();
-	?>
-	<span class="teb-cart-count"><?php echo esc_html( $cart_count ); ?></span>
-	<?php
+	if ( $cart_count > 0 ) {
+		?>
+		<span class="teb-cart-count"><?php echo esc_html( $cart_count ); ?></span>
+		<?php
+	}
 	$fragments['.teb-cart-count'] = ob_get_clean();
 	
 	return $fragments;
@@ -172,4 +176,16 @@ function the_emily_boutique_add_to_cart_text( $text ) {
 }
 add_filter( 'woocommerce_product_add_to_cart_text', 'the_emily_boutique_add_to_cart_text' );
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'the_emily_boutique_add_to_cart_text' );
+
+/**
+ * Remove checkmark icon from add to cart button
+ */
+function the_emily_boutique_remove_checkmark_from_button( $args, $product ) {
+	if ( isset( $args['attributes']['data-success_message'] ) ) {
+		// Remove any icon markup from success message
+		$args['attributes']['data-success_message'] = strip_tags( $args['attributes']['data-success_message'] );
+	}
+	return $args;
+}
+add_filter( 'woocommerce_loop_add_to_cart_args', 'the_emily_boutique_remove_checkmark_from_button', 10, 2 );
 

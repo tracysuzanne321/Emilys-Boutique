@@ -109,12 +109,50 @@
 	}
 
 	/**
+	 * Remove checkmark from add to cart buttons
+	 */
+	function removeCheckmarkFromButtons() {
+		// Remove any checkmark icons that WooCommerce might add
+		document.addEventListener('added_to_cart', function() {
+			const buttons = document.querySelectorAll('.product .button, .woocommerce ul.products li.product .button');
+			buttons.forEach(function(button) {
+				// Remove any SVG icons
+				const svgs = button.querySelectorAll('svg');
+				svgs.forEach(function(svg) {
+					svg.remove();
+				});
+				// Remove any icon elements
+				const icons = button.querySelectorAll('.icon, [class*="icon"], [class*="check"]');
+				icons.forEach(function(icon) {
+					icon.remove();
+				});
+			});
+		});
+		
+		// Also check periodically for any checkmarks that might be added
+		setInterval(function() {
+			const buttons = document.querySelectorAll('.product .button, .woocommerce ul.products li.product .button');
+			buttons.forEach(function(button) {
+				const svgs = button.querySelectorAll('svg');
+				svgs.forEach(function(svg) {
+					svg.remove();
+				});
+				const icons = button.querySelectorAll('.icon, [class*="icon"], [class*="check"]');
+				icons.forEach(function(icon) {
+					icon.remove();
+				});
+			});
+		}, 100);
+	}
+
+	/**
 	 * Initialize when DOM is ready
 	 */
 	function init() {
 		initMobileMenu();
 		initMobileDropdowns();
 		initScrollFadeIn();
+		removeCheckmarkFromButtons();
 	}
 
 	// Run when DOM is ready

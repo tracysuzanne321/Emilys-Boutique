@@ -42,12 +42,13 @@
 					)
 				);
 				?>
-				<?php if ( function_exists( 'the_emily_boutique_header_cart' ) ) : ?>
-					<div class="teb-header-cart">
-						<?php the_emily_boutique_header_cart(); ?>
-					</div>
-				<?php endif; ?>
 			</nav>
+
+			<?php if ( function_exists( 'the_emily_boutique_header_cart' ) ) : ?>
+				<div class="teb-header-cart">
+					<?php the_emily_boutique_header_cart(); ?>
+				</div>
+			<?php endif; ?>
 		</div>
 	</header>
 
