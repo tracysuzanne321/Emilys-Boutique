@@ -19,3 +19,35 @@
 	transform: translateY(0);
 }
 
+/* Gutenberg Block Fade-In Animations */
+.wp-block-post-content > *,
+.entry-content > .wp-block-group,
+.entry-content > .wp-block-columns,
+.entry-content > .wp-block-cover,
+.entry-content > .wp-block-image,
+.entry-content > .wp-block-gallery,
+.entry-content > .wp-block-media-text,
+.entry-content > .wp-block-column,
+.site-main .wp-block-group,
+.site-main .wp-block-columns,
+.site-main .wp-block-cover {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.wp-block-post-content > *.fade-in,
+.entry-content > .wp-block-group.fade-in,
+.entry-content > .wp-block-columns.fade-in,
+.entry-content > .wp-block-cover.fade-in,
+.entry-content > .wp-block-image.fade-in,
+.entry-content > .wp-block-gallery.fade-in,
+.entry-content > .wp-block-media-text.fade-in,
+.entry-content > .wp-block-column.fade-in,
+.site-main .wp-block-group.fade-in,
+.site-main .wp-block-columns.fade-in,
+.site-main .wp-block-cover.fade-in {
+	opacity: 1;
+	transform: translateY(0);
+}
+

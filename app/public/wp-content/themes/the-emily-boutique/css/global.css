@@ -115,6 +115,13 @@ h1 {
 	margin-bottom: var(--spacing-lg);
 }
 
+/* Smaller H1 for Gutenberg block pages */
+.wp-block-post-content h1,
+.entry-content h1,
+.page .site-main h1 {
+	font-size: clamp(2.5rem, 4.5vw, 2.75rem);
+}
+
 h2 {
 	font-size: 2.25rem;
 	margin-bottom: var(--spacing-md);
@@ -152,6 +159,7 @@ img {
    Layout Containers
    ============================================ */
 
+
 .site-container {
 	max-width: var(--container-width);
 	margin: 0 auto;
@@ -188,6 +196,12 @@ img {
 	min-height: 60vh;
 	padding: var(--spacing-xl) 0;
 }
+
+/* Remove top padding for Gutenberg block pages, but exclude WooCommerce cart and checkout */
+/* .page:not(.woocommerce-cart):not(.woocommerce-checkout) .site-main,
+.has-blocks:not(.woocommerce-cart):not(.woocommerce-checkout) .site-main {
+	padding-top: 0;
+} */
 
 /* ============================================
    Buttons

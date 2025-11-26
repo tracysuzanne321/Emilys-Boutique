@@ -6,8 +6,10 @@
 .hero-section {
 	background-color: var(--color-cream);
 	padding: var(--spacing-xl) 0;
-	margin-bottom: var(--spacing-xl);
+	border-radius: var(--radius-lg);
 }
+
+
 
 .hero-inner {
 	max-width: var(--container-width);
@@ -17,6 +19,21 @@
 	grid-template-columns: 1fr 1fr;
 	gap: var(--spacing-xl);
 	align-items: center;
+}
+
+.hero-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-self: center;
+}
+
+/* Ensure hero content is centered in Gutenberg blocks */
+.wp-block-columns.hero-inner .wp-block-column:first-child,
+.hero-section .wp-block-columns .wp-block-column:first-child {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .hero-content h1 {
@@ -35,14 +52,21 @@
 	flex-wrap: wrap;
 }
 
-.hero-buttons .btn-primary {
+.wp-block-button__link {
 	background-color: var(--color-gold);
 	color: var(--color-navy);
 	border: 2px solid var(--color-gold);
+	border-radius: 10px;
+	font-size: 1rem;
+	font-weight: 500;
+	padding: 10px 20px;
+	text-transform: uppercase;
 }
 
-.hero-buttons .btn-primary:hover,
-.hero-buttons .btn-primary:focus {
+
+
+.wp-block-button__link:hover,
+.wp-block-button__link :focus {
 	background-color: var(--color-navy);
 	color: var(--color-white);
 	border-color: var(--color-navy);
@@ -51,7 +75,7 @@
 .hero-image {
 	background-color: var(--color-white);
 	border-radius: var(--radius-md);
-	min-height: 500px;
+	min-height: 400px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -185,7 +209,7 @@
 
 .about-teaser-content {
 	max-width: 800px;
-	margin: 0 auto;
+	margin: 0 auto !important;
 	padding: 0 var(--container-padding);
 }
 
@@ -221,12 +245,17 @@
 }
 
 .featured-products .section-title {
-	margin-bottom: var(--spacing-xl);
+	margin-bottom: var(--spacing-xl) !important;
+	padding: 0 var(--container-padding) !important;
 	color: var(--color-navy);
 }
 
 .featured-products .products {
 	margin-top: var(--spacing-lg);
+}
+
+.wc-block-product-template {
+	margin-top: var(--spacing-xl) !important;
 }
 
 /* View Cart Link in Product Cards */
@@ -264,3 +293,18 @@
 	text-decoration: underline;
 }
 
+.wp-block-button.wc-block-components-product-button {
+	margin-bottom: 20px !important;
+}
+
+.wp-block-post-title :where(a){
+	color: var(--color-navy) !important;
+}
+
+.wc-block-components-product-price{
+color: var(--color-deep-rose) !important;
+font-weight: 600 !important;
+font-size: 1rem !important;
+margin-bottom: 10px !important;
+padding: 0 var(--spacing-md) !important;
+}

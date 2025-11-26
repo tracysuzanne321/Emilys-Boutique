@@ -75,7 +75,25 @@
 		// Sections to animate
 		const sections = document.querySelectorAll('.hero-section, .featured-categories, .about-teaser, .featured-products');
 		
-		if (sections.length === 0) {
+		// Gutenberg blocks to animate
+		const gutenbergBlocks = document.querySelectorAll(
+			'.wp-block-post-content > *, ' +
+			'.entry-content > .wp-block-group, ' +
+			'.entry-content > .wp-block-columns, ' +
+			'.entry-content > .wp-block-cover, ' +
+			'.entry-content > .wp-block-image, ' +
+			'.entry-content > .wp-block-gallery, ' +
+			'.entry-content > .wp-block-media-text, ' +
+			'.entry-content > .wp-block-column, ' +
+			'.site-main .wp-block-group, ' +
+			'.site-main .wp-block-columns, ' +
+			'.site-main .wp-block-cover'
+		);
+		
+		// Combine all elements to animate
+		const allElements = [...sections, ...gutenbergBlocks];
+		
+		if (allElements.length === 0) {
 			return;
 		}
 		
@@ -96,15 +114,23 @@
 			});
 		}, observerOptions);
 		
-		// Observe each section
-		sections.forEach(function(section) {
-			observer.observe(section);
+		// Observe each element
+		allElements.forEach(function(element) {
+			observer.observe(element);
 		});
 		
 		// Trigger hero section immediately on load (since it's above the fold)
 		const heroSection = document.querySelector('.hero-section');
 		if (heroSection && window.innerHeight > heroSection.getBoundingClientRect().top) {
 			heroSection.classList.add('fade-in');
+		}
+		
+		// Trigger first Gutenberg block immediately if it's above the fold
+		if (gutenbergBlocks.length > 0) {
+			const firstBlock = gutenbergBlocks[0];
+			if (firstBlock && window.innerHeight > firstBlock.getBoundingClientRect().top) {
+				firstBlock.classList.add('fade-in');
+			}
 		}
 	}
 
