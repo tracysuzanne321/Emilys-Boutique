@@ -41,6 +41,11 @@
 				)
 			);
 			?>
+			<?php if ( function_exists( 'the_emily_boutique_header_cart' ) ) : ?>
+				<div class="nav-cart-wrapper">
+					<?php the_emily_boutique_header_cart(); ?>
+				</div>
+			<?php endif; ?>
 		</div>
 	</nav>
 

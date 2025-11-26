@@ -91,6 +91,26 @@
 	padding: 0 var(--container-padding);
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.primary-navigation ul {
+	list-style: none;
+	display: flex;
+	gap: var(--spacing-lg);
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-cart-wrapper {
+	position: absolute;
+	right: var(--container-padding);
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 .primary-navigation ul {
@@ -162,37 +182,42 @@
 	opacity: 1;
 }
 
-/* Header Cart Icon */
-.teb-header-cart {
+/* Navigation Cart Icon */
+.nav-cart-wrapper {
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
 }
 
 .teb-cart-link {
 	display: flex;
 	align-items: center;
 	gap: var(--spacing-xs);
-	color: var(--color-gold);
+	color: var(--color-navy);
 	text-decoration: none;
-	padding: var(--spacing-xs) var(--spacing-sm);
+	padding: var(--spacing-sm) var(--spacing-md);
 	border: none;
 	border-radius: var(--radius-sm);
 	transition: all 0.3s ease;
 	position: relative;
+	font-weight: 500;
+	font-size: 0.95rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 }
 
 .teb-cart-link:hover,
 .teb-cart-link:focus {
 	color: var(--color-deep-rose);
+	background-color: rgba(217, 136, 156, 0.1);
 }
 
 .teb-cart-icon {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 24px;
-	height: 24px;
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
 }
 
 .teb-cart-icon svg {
@@ -209,6 +234,11 @@
 	min-width: 20px;
 	text-align: center;
 	line-height: 1;
+	background-color: var(--color-deep-rose);
+	color: var(--color-white);
+	border-radius: 50%;
+	padding: 2px 6px;
+	font-size: 0.75rem;
 }
 
 /* Dropdown Menu Styles */
@@ -386,9 +416,24 @@
 		padding: var(--spacing-sm) 0;
 	}
 	
+	.nav-container {
+		flex-direction: column;
+		gap: var(--spacing-sm);
+		position: relative;
+	}
+	
 	.primary-navigation ul {
 		gap: var(--spacing-sm);
 		flex-direction: column;
+		width: 100%;
+	}
+	
+	.nav-cart-wrapper {
+		position: static;
+		transform: none;
+		width: 100%;
+		justify-content: center;
+		margin-top: var(--spacing-xs);
 	}
 	
 	.primary-navigation a {

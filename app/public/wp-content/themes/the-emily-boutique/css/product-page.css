@@ -208,9 +208,9 @@
 .single-product .summary .single_add_to_cart_button:hover,
 .single-product .summary .single_add_to_cart_button:focus,
 .single-product .summary .single_add_to_cart_button:focus-visible {
-	background-color: var(--color-gold);
-	color: var(--color-navy);
-	border-color: var(--color-gold);
+	background-color: var(--color-deep-rose);
+	color: var(--color-white);
+	border-color: var(--color-deep-rose);
 }
 
 .single-product .summary .single_add_to_cart_button:disabled {

@@ -58,9 +58,9 @@
 }
 
 .wp-block-button__link {
-	background-color: var(--color-gold);
-	color: var(--color-navy);
-	border: 2px solid var(--color-gold);
+	background-color: var(--color-navy);
+	color: var(--color-white);
+	border: 2px solid var(--color-navy);
 	border-radius: 10px;
 	font-size: 1rem;
 	font-weight: 500;
@@ -68,13 +68,11 @@
 	text-transform: uppercase;
 }
 
-
-
 .wp-block-button__link:hover,
-.wp-block-button__link :focus {
-	background-color: var(--color-navy);
+.wp-block-button__link:focus {
+	background-color: var(--color-deep-rose);
 	color: var(--color-white);
-	border-color: var(--color-navy);
+	border-color: var(--color-deep-rose);
 }
 
 .hero-image {
@@ -301,9 +299,9 @@
 
 .category-card .btn-primary:hover,
 .category-card .btn-primary:focus {
-	background-color: var(--color-gold);
-	color: var(--color-navy);
-	border-color: var(--color-gold);
+	background-color: var(--color-deep-rose);
+	color: var(--color-white);
+	border-color: var(--color-deep-rose);
 }
 
 /* About Teaser */
@@ -339,9 +337,9 @@
 
 .about-teaser .btn-secondary:hover,
 .about-teaser .btn-secondary:focus {
-	background-color: var(--color-gold);
+	background-color: var(--color-deep-rose);
 	color: var(--color-white);
-	border-color: var(--color-gold);
+	border-color: var(--color-deep-rose);
 }
 
 /* Featured Products */

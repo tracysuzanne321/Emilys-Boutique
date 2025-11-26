@@ -127,8 +127,8 @@
 .woocommerce ul.products li.product .button:focus,
 .woocommerce ul.products li.product a.button:hover,
 .woocommerce ul.products li.product a.button:focus {
-	background-color: var(--color-gold) !important;
-	color: var(--color-navy) !important;
-	border-color: var(--color-gold) !important;
+	background-color: var(--color-deep-rose) !important;
+	color: var(--color-white) !important;
+	border-color: var(--color-deep-rose) !important;
 }
 

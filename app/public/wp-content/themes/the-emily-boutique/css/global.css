@@ -226,26 +226,29 @@ img {
 }
 
 .btn-primary {
-	background-color: var(--color-white);
-	color: var(--color-navy);
-	border: 2px solid var(--color-gold);
+	background-color: var(--color-navy);
+	color: var(--color-white);
+	border: 2px solid var(--color-navy);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-	background-color: var(--color-gold);
+	background-color: var(--color-deep-rose);
 	color: var(--color-white);
+	border-color: var(--color-deep-rose);
 }
 
 .btn-secondary {
-	background-color: var(--color-light-rose);
-	color: var(--color-navy);
+	background-color: var(--color-navy);
+	color: var(--color-white);
+	border: 2px solid var(--color-navy);
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus {
 	background-color: var(--color-deep-rose);
 	color: var(--color-white);
+	border-color: var(--color-deep-rose);
 }
 
 /* ============================================
