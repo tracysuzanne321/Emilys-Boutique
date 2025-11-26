@@ -123,7 +123,7 @@
 .woocommerce-cart-form .quantity .qty {
 	width: 60px;
 	padding: 8px 12px;
-	border: 2px solid rgba(217, 176, 102, 0.3);
+	border: 2px solid var(--color-deep-rose);
 	border-radius: var(--radius-sm);
 	font-family: var(--font-body);
 	font-size: 1rem;
@@ -187,7 +187,7 @@
 
 .woocommerce-cart-form .coupon .input-text {
 	padding: 10px 12px;
-	border: 2px solid rgba(217, 176, 102, 0.3);
+	border: 2px solid var(--color-deep-rose);
 	border-radius: var(--radius-sm);
 	font-family: var(--font-body);
 	flex: 1;
@@ -196,6 +196,10 @@
 }
 
 .woocommerce-cart-form .coupon .input-text:focus {
+	outline: 2px solid var(--color-deep-rose);
+	outline-offset: 2px;
+	border-color: var(--color-deep-rose);
+}
 	outline: none;
 	border-color: var(--color-gold);
 }
@@ -594,9 +598,10 @@
 
 .wc-block-components-quantity-selector input,
 .wp-block-woocommerce-cart-line-items-block .wc-block-components-quantity-selector input {
-	border: none;
+	border: 2px solid var(--color-deep-rose);
 	padding: 8px 12px;
 	width: 60px;
+	border-radius: var(--radius-sm);
 	text-align: center;
 	font-family: var(--font-body);
 	font-size: 1rem;
@@ -605,8 +610,9 @@
 
 .wc-block-components-quantity-selector input:focus,
 .wp-block-woocommerce-cart-line-items-block .wc-block-components-quantity-selector input:focus {
-	outline: 2px solid var(--color-gold);
+	outline: 2px solid var(--color-deep-rose);
 	outline-offset: -2px;
+	border-color: var(--color-deep-rose);
 }
 
 /* Remove Button in Cart Block */

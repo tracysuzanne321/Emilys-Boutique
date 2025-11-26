@@ -171,38 +171,69 @@
 		}, 100);
 	}
 
+
 	/**
-	 * Header Scroll Effect - Shrink Logo on Scroll
+	 * Format WAPF textarea placeholders with line breaks using | symbol
 	 */
-	function initHeaderScroll() {
-		const siteHeader = document.querySelector('.site-header');
+	function formatWapfTextareas() {
+		const wapfTextareas = document.querySelectorAll('.wapf-field-input textarea');
 		
-		if (!siteHeader) {
-			return;
-		}
-		
-		function handleScroll() {
-			if (window.scrollY > 50) {
-				siteHeader.classList.add('scrolled');
-			} else {
-				siteHeader.classList.remove('scrolled');
+		wapfTextareas.forEach(function(textarea) {
+			// Check if placeholder contains line break symbol (|)
+			if (textarea.placeholder && textarea.placeholder.includes('|')) {
+				// Replace | with actual line breaks
+				textarea.placeholder = textarea.placeholder.replace(/\s*\|\s*/g, '\n');
 			}
-		}
-		
-		// Throttle scroll events for better performance
-		let ticking = false;
-		window.addEventListener('scroll', function() {
-			if (!ticking) {
-				window.requestAnimationFrame(function() {
-					handleScroll();
-					ticking = false;
-				});
-				ticking = true;
+			
+			// Also check for description/example text that might be displayed
+			const fieldContainer = textarea.closest('.wapf-field-container');
+			if (fieldContainer) {
+				const description = fieldContainer.querySelector('.wapf-field-description');
+				if (description && description.textContent.includes('|')) {
+					// Replace | with <br> in description
+					description.innerHTML = description.innerHTML.replace(/\s*\|\s*/g, '<br>');
+				}
+				
+				// Check label for example text
+				const label = fieldContainer.querySelector('.wapf-field-label label');
+				if (label && label.innerHTML.includes('|')) {
+					// Replace | with <br> in label
+					label.innerHTML = label.innerHTML.replace(/\s*\|\s*/g, '<br>');
+				}
 			}
 		});
-		
-		// Check initial scroll position
-		handleScroll();
+	}
+	
+	// Watch for dynamically added WAPF fields
+	const wapfObserver = new MutationObserver(function(mutations) {
+		let shouldFormat = false;
+		mutations.forEach(function(mutation) {
+			if (mutation.addedNodes.length > 0) {
+				mutation.addedNodes.forEach(function(node) {
+					if (node.nodeType === 1 && (node.classList.contains('wapf-field-container') || node.querySelector('.wapf-field-input textarea'))) {
+						shouldFormat = true;
+					}
+				});
+			}
+		});
+		if (shouldFormat) {
+			formatWapfTextareas();
+		}
+	});
+	
+	// Start observing when DOM is ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', function() {
+			wapfObserver.observe(document.body, {
+				childList: true,
+				subtree: true
+			});
+		});
+	} else {
+		wapfObserver.observe(document.body, {
+			childList: true,
+			subtree: true
+		});
 	}
 
 	/**
@@ -213,7 +244,7 @@
 		initMobileDropdowns();
 		initScrollFadeIn();
 		removeCheckmarkFromButtons();
-		initHeaderScroll();
+		formatWapfTextareas();
 	}
 
 	// Run when DOM is ready

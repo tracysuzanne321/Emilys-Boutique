@@ -171,7 +171,7 @@
 .single-product .summary .quantity .qty {
 	width: 80px;
 	padding: 12px;
-	border: 2px solid rgba(217, 176, 102, 0.3);
+	border: 2px solid var(--color-deep-rose);
 	border-radius: var(--radius-sm);
 	font-family: var(--font-body);
 	font-size: 1rem;
@@ -181,9 +181,9 @@
 
 .single-product .summary .quantity .qty:focus,
 .single-product .summary .quantity .qty:focus-visible {
-	outline: 2px solid var(--color-gold);
+	outline: 2px solid var(--color-deep-rose);
 	outline-offset: 2px;
-	border-color: var(--color-gold);
+	border-color: var(--color-deep-rose);
 }
 
 /* Add to Basket Button */
@@ -300,6 +300,129 @@ padding: 0 var(--container-padding) !important;
 
 #ppcp-recaptcha-v2-container {
 	margin: 0 !important;
+}
+
+/* Remove star and three dots from WAPF field labels */
+.wapf-field-label.wapf--above .required,
+.wapf-field-label.wapf--above abbr.required,
+.wapf-field-label .required,
+.wapf-field-label abbr.required {
+	display: none !important;
+}
+
+.wapf-field-label.wapf--above .wapf-pricing-hint,
+.wapf-field-label .wapf-pricing-hint {
+	display: none !important;
+}
+
+/* Remove any pseudo-elements that might show dots */
+.wapf-field-label.wapf--above::before,
+.wapf-field-label.wapf--above::after,
+.wapf-field-label.wapf--above label::before,
+.wapf-field-label.wapf--above label::after {
+	display: none !important;
+	content: none !important;
+}
+
+/* Style WAPF field inputs */
+.wapf-field-input input[type="text"],
+.wapf-field-input input[type="email"],
+.wapf-field-input input[type="number"],
+.wapf-field-input input[type="url"],
+.wapf-field-input textarea,
+.wapf-field-input select {
+	width: 100%;
+	padding: 12px;
+	border: 2px solid var(--color-deep-rose);
+	border-radius: var(--radius-sm);
+	font-family: var(--font-body);
+	font-size: 1rem;
+	color: var(--color-navy);
+	background-color: var(--color-white);
+	transition: border-color 0.3s ease, outline 0.3s ease;
+	box-sizing: border-box;
+}
+
+.wapf-field-input input[type="text"]:focus,
+.wapf-field-input input[type="email"]:focus,
+.wapf-field-input input[type="number"]:focus,
+.wapf-field-input input[type="url"]:focus,
+.wapf-field-input textarea:focus,
+.wapf-field-input select:focus {
+	outline: 2px solid var(--color-deep-rose);
+	outline-offset: 2px;
+	border-color: var(--color-deep-rose);
+}
+
+.wapf-field-input textarea {
+	min-height: 195px;
+	resize: vertical;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	/* line-height: 1.6; */
+}
+
+/* Style placeholder text in textarea to show example on separate lines */
+.wapf-field-input textarea::placeholder {
+	white-space: pre-line;
+	line-height: 1.8;
+	color: var(--color-dark-gray);
+	opacity: 0.7;
+}
+
+.wapf-field-input select {
+	cursor: pointer;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640' fill='%236a7489'%3E%3Cpath d='M297.4 470.6C309.9 483.1 330.2 483.1 342.7 470.6L534.7 278.6C547.2 266.1 547.2 245.8 534.7 233.3C522.2 220.8 501.9 220.8 489.4 233.3L320 402.7L150.6 233.4C138.1 220.9 117.8 220.9 105.3 233.4C92.8 245.9 92.8 266.2 105.3 278.7L297.3 470.7z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+	background-size: 16px;
+	padding-right: 40px;
+}
+
+/* Style WAPF checkboxes and radio buttons */
+.wapf-field-input input[type="checkbox"],
+.wapf-field-input input[type="radio"] {
+	width: 20px;
+	height: 20px;
+	margin-right: var(--spacing-sm);
+	margin-top: 2px;
+	cursor: pointer;
+	accent-color: var(--color-navy);
+}
+
+.wapf-field-input input[type="checkbox"]:focus,
+.wapf-field-input input[type="radio"]:focus {
+	outline: 2px solid var(--color-deep-rose);
+	outline-offset: 2px;
+}
+
+.wapf-input-label {
+	font-weight: 500;
+	color: var(--color-navy);
+	margin-left: var(--spacing-xs);
+}
+
+/* Style WAPF field container */
+.wapf-field-container {
+	margin-bottom: var(--spacing-md);
+}
+
+.wapf-field-label {
+	margin-bottom: var(--spacing-xs);
+}
+
+.wapf-field-label label {
+	font-weight: 600;
+	color: var(--color-navy);
+	font-size: 0.95rem;
+}
+
+.wapf-field-description {
+	font-size: 0.875rem;
+	color: var(--color-dark-gray);
+	margin-top: var(--spacing-xs);
+	opacity: 0.8;
 }
 
 

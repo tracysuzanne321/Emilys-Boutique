@@ -86,7 +86,7 @@ body.tax-product_tag .site-main .woocommerce {
 .woocommerce form .form-row input.input-text,
 .woocommerce form .form-row textarea,
 .woocommerce form .form-row select {
-	border: 2px solid rgba(217, 176, 102, 0.3);
+	border: 2px solid var(--color-deep-rose);
 	border-radius: var(--radius-sm);
 	padding: 10px 12px;
 	font-family: var(--font-body);
@@ -96,8 +96,9 @@ body.tax-product_tag .site-main .woocommerce {
 .woocommerce form .form-row input.input-text:focus,
 .woocommerce form .form-row textarea:focus,
 .woocommerce form .form-row select:focus {
-	outline: none;
-	border-color: var(--color-gold);
+	outline: 2px solid var(--color-deep-rose);
+	outline-offset: 2px;
+	border-color: var(--color-deep-rose);
 }
 
 /* WooCommerce Result Count & Ordering */
@@ -109,7 +110,7 @@ body.tax-product_tag .site-main .woocommerce {
 }
 
 .woocommerce-ordering select {
-	border: 2px solid rgba(217, 176, 102, 0.3);
+	border: 2px solid var(--color-deep-rose);
 	border-radius: var(--radius-sm);
 	padding: 8px 12px;
 	font-family: var(--font-body);
@@ -118,8 +119,9 @@ body.tax-product_tag .site-main .woocommerce {
 }
 
 .woocommerce-ordering select:focus {
-	outline: none;
-	border-color: var(--color-gold);
+	outline: 2px solid var(--color-deep-rose);
+	outline-offset: 2px;
+	border-color: var(--color-deep-rose);
 }
 
 /* WooCommerce Product Categories */
