@@ -5,14 +5,14 @@
 /* CSS Variables - Brand Colors & Typography */
 :root {
 	/* Colors */
-	--color-navy: #2D3A53;
+	--color-navy: #6a7489;
 	--color-gold: #D9B066;
 	--color-light-rose: #F7BDC9;
 	--color-deep-rose: #D9889C;
 	--color-soft-sage: #AFC7B1;
 	--color-leaf-green: #5E7F6A;
 	--color-white: #FFFFFF;
-	--color-cream: #F8F5F2;
+	--color-cream: #e5dada;
 	--color-dark-gray: #3A3A3A;
 	
 	/* Typography */
@@ -164,6 +164,8 @@ img {
 	max-width: var(--container-width);
 	margin: 0 auto;
 	padding: 0 var(--container-padding);
+	width: 100%;
+	box-sizing: border-box;
 }
 
 /* Ensure header and footer remain full width */

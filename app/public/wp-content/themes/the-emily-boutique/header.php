@@ -28,10 +28,6 @@
 			</div>
 
 			<nav id="site-navigation" class="primary-navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'the-emily-boutique' ); ?>">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-					<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'the-emily-boutique' ); ?></span>
-					<span aria-hidden="true">☰</span>
-				</button>
 				<?php
 				wp_nav_menu(
 					array(
@@ -44,11 +40,22 @@
 				?>
 			</nav>
 
-			<?php if ( function_exists( 'the_emily_boutique_header_cart' ) ) : ?>
-				<div class="teb-header-cart">
-					<?php the_emily_boutique_header_cart(); ?>
-				</div>
-			<?php endif; ?>
+			<div class="header-right">
+				<?php if ( function_exists( 'the_emily_boutique_header_cart' ) ) : ?>
+					<div class="teb-header-cart">
+						<?php the_emily_boutique_header_cart(); ?>
+					</div>
+				<?php endif; ?>
+				
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+					<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'the-emily-boutique' ); ?></span>
+					<span class="hamburger-icon" aria-hidden="true">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</button>
+			</div>
 		</div>
 	</header>
 

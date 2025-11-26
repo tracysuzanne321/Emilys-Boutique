@@ -129,6 +129,7 @@
 
 			<div class="footer-bottom">
 				<p class="footer-copyright">&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'All rights reserved.', 'the-emily-boutique' ); ?></p>
+				<p class="footer-credit"><?php esc_html_e( 'Website made by', 'the-emily-boutique' ); ?> <a href="https://jts-digital.co.uk" target="_blank" rel="noopener noreferrer">JTS Digital</a></p>
 			</div>
 		</div>
 	</footer>
