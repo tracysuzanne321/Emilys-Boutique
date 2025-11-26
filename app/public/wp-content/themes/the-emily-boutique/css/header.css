@@ -10,6 +10,12 @@
 	top: 32px;
 	z-index: 1000;
 	box-shadow: var(--shadow-soft);
+	transition: padding 0.3s ease;
+}
+
+/* Reduce header padding when scrolled */
+.site-header.scrolled {
+	padding: var(--spacing-sm) 0;
 }
 
 .header-inner {
@@ -53,12 +59,26 @@
 	max-height: 80px;
 	width: auto;
 	height: auto;
+	transition: max-height 0.3s ease, transform 0.3s ease;
 }
 
 @media (min-width: 768px) {
 	.site-branding .custom-logo-link img,
 	.site-logo img {
 		max-height: 100px;
+	}
+}
+
+/* Shrink logo when scrolled */
+.site-header.scrolled .site-branding .custom-logo-link img,
+.site-header.scrolled .site-logo img {
+	max-height: 60px;
+}
+
+@media (min-width: 768px) {
+	.site-header.scrolled .site-branding .custom-logo-link img,
+	.site-header.scrolled .site-logo img {
+		max-height: 70px;
 	}
 }
 
@@ -69,6 +89,7 @@
 	z-index: 999;
 	width: 100%;
 	box-shadow: 0 2px 8px rgba(45, 58, 83, 0.1);
+	transition: top 0.3s ease;
 }
 
 /* Adjust navigation top position to account for header height when both are sticky */
@@ -77,11 +98,21 @@
 	.primary-navigation {
 		top: 142px; /* 32px (header top) + ~110px (header height with 80px logo + padding) */
 	}
+	
+	/* Adjust navigation position when header is scrolled (smaller logo + reduced padding) */
+	.site-header.scrolled ~ .primary-navigation {
+		top: 112px; /* 32px (header top) + ~80px (reduced header height with 60px logo + reduced padding) */
+	}
 }
 
 @media (min-width: 768px) {
 	.primary-navigation {
-		top: 180px; /* 32px (header top) + ~130px (header height with 100px logo + padding) */
+		top: 151px; /* 32px (header top) + ~130px (header height with 100px logo + padding) */
+	}
+	
+	/* Adjust navigation position when header is scrolled (smaller logo + reduced padding) */
+	.site-header.scrolled ~ .primary-navigation {
+		top: 135px; /* 32px (header top) + ~90px (reduced header height with 70px logo + reduced padding) */
 	}
 }
 

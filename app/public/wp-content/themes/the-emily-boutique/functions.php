@@ -82,6 +82,26 @@ function the_emily_boutique_scripts() {
 		wp_get_theme()->get( 'Version' ),
 		true
 	);
+	
+	// Enqueue snow animation only on front page
+	if ( is_front_page() ) {
+		// Enqueue snow CSS
+		wp_enqueue_style(
+			'the-emily-boutique-snow',
+			get_template_directory_uri() . '/css/snow.css',
+			array(),
+			wp_get_theme()->get( 'Version' )
+		);
+		
+		// Enqueue snow JavaScript
+		wp_enqueue_script(
+			'the-emily-boutique-snow',
+			get_template_directory_uri() . '/snow.js',
+			array(),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'the_emily_boutique_scripts' );
 
@@ -217,4 +237,91 @@ function the_emily_boutique_remove_product_tabs( $tabs ) {
 	return $tabs;
 }
 add_filter( 'woocommerce_product_tabs', 'the_emily_boutique_remove_product_tabs', 98 );
+
+/**
+ * Inject snow container into sections on front page
+ */
+function the_emily_boutique_add_snow_to_sections( $block_content, $block ) {
+	// Only on front page
+	if ( ! is_front_page() ) {
+		return $block_content;
+	}
+	
+	// Skip if it already has a snow container
+	if ( strpos( $block_content, 'snow-container' ) !== false ) {
+		return $block_content;
+	}
+	
+	// Track how many sections have snow (limit to avoid performance issues)
+	static $snow_count = 0;
+	$max_snow_sections = 8; // Increased limit for more sections
+	
+	if ( $snow_count >= $max_snow_sections ) {
+		return $block_content;
+	}
+	
+	// Check if this is a Group, Cover, or WooCommerce block
+	$is_relevant_block = false;
+	if ( isset( $block['blockName'] ) ) {
+		$is_relevant_block = in_array( $block['blockName'], array(
+			'core/group',
+			'core/cover',
+			'woocommerce/product-category',
+			'woocommerce/all-products',
+			'woocommerce/handpicked-products'
+		) ) || strpos( $block['blockName'], 'woocommerce' ) !== false;
+	}
+	
+	if ( $is_relevant_block ) {
+		
+		// Check for spacing attributes that indicate a major section
+		$is_major_section = false;
+		if ( isset( $block['attrs']['spacing'] ) ) {
+			$is_major_section = true;
+		}
+		
+		// Check for className that indicates a section
+		$has_section_indicator = false;
+		if ( isset( $block['attrs']['className'] ) ) {
+			$class_name = $block['attrs']['className'];
+			$has_section_indicator = strpos( $class_name, 'hero' ) !== false ||
+			                        strpos( $class_name, 'section' ) !== false ||
+			                        strpos( $class_name, 'featured' ) !== false ||
+			                        strpos( $class_name, 'about' ) !== false ||
+			                        strpos( $class_name, 'category' ) !== false ||
+			                        strpos( $class_name, 'shop' ) !== false ||
+			                        strpos( $class_name, 'product' ) !== false;
+		}
+		
+		// Check if content contains "category" or "shop" text (for shop by category sections)
+		$has_category_text = false;
+		if ( ! empty( $block_content ) ) {
+			$has_category_text = stripos( $block_content, 'category' ) !== false ||
+			                     stripos( $block_content, 'shop' ) !== false;
+		}
+		
+		// Add snow to:
+		// 1. All Cover blocks (usually hero sections)
+		// 2. WooCommerce category/product blocks
+		// 3. Group blocks with section-related classes
+		// 4. Group blocks with spacing (major sections)
+		// 5. Blocks containing "category" or "shop" text
+		// 6. First several Group blocks (to catch other sections)
+		if ( $block['blockName'] === 'core/cover' || 
+		     strpos( $block['blockName'], 'woocommerce' ) !== false ||
+		     $has_section_indicator || 
+		     $is_major_section ||
+		     $has_category_text ||
+		     ( $block['blockName'] === 'core/group' && $snow_count < 6 ) ) {
+			
+			$snow_count++;
+			// Inject snow container at the beginning of the block
+			$snow_container = '<div class="snow-container"></div>';
+			return $snow_container . $block_content;
+		}
+	}
+	
+	return $block_content;
+}
+add_filter( 'render_block', 'the_emily_boutique_add_snow_to_sections', 10, 2 );
 

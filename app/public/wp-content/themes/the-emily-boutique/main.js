@@ -172,6 +172,40 @@
 	}
 
 	/**
+	 * Header Scroll Effect - Shrink Logo on Scroll
+	 */
+	function initHeaderScroll() {
+		const siteHeader = document.querySelector('.site-header');
+		
+		if (!siteHeader) {
+			return;
+		}
+		
+		function handleScroll() {
+			if (window.scrollY > 50) {
+				siteHeader.classList.add('scrolled');
+			} else {
+				siteHeader.classList.remove('scrolled');
+			}
+		}
+		
+		// Throttle scroll events for better performance
+		let ticking = false;
+		window.addEventListener('scroll', function() {
+			if (!ticking) {
+				window.requestAnimationFrame(function() {
+					handleScroll();
+					ticking = false;
+				});
+				ticking = true;
+			}
+		});
+		
+		// Check initial scroll position
+		handleScroll();
+	}
+
+	/**
 	 * Initialize when DOM is ready
 	 */
 	function init() {
@@ -179,6 +213,7 @@
 		initMobileDropdowns();
 		initScrollFadeIn();
 		removeCheckmarkFromButtons();
+		initHeaderScroll();
 	}
 
 	// Run when DOM is ready

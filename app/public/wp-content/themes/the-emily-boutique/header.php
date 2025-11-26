@@ -12,6 +12,9 @@
 
 <div id="page" class="site">
 	<header id="masthead" class="site-header">
+		<?php if ( is_front_page() ) : ?>
+			<div class="snow-container"></div>
+		<?php endif; ?>
 		<div class="header-inner">
 			<div class="site-branding">
 				<?php
