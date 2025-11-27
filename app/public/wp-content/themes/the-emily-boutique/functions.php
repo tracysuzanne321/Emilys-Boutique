@@ -325,3 +325,215 @@ function the_emily_boutique_add_snow_to_sections( $block_content, $block ) {
 }
 add_filter( 'render_block', 'the_emily_boutique_add_snow_to_sections', 10, 2 );
 
+/**
+ * Add Delivery & Return Policies fields to WooCommerce Product Shipping tab
+ */
+function the_emily_boutique_add_delivery_fields() {
+	global $woocommerce, $post;
+	
+	$product = wc_get_product( $post->ID );
+	
+	// Delivery - Minimum Days
+	woocommerce_wp_text_input(
+		array(
+			'id'          => '_teb_delivery_min_days',
+			'label'       => __( 'Delivery – earliest days from today', 'the-emily-boutique' ),
+			'placeholder' => '4',
+			'type'        => 'number',
+			'custom_attributes' => array(
+				'step' => '1',
+				'min'  => '0',
+			),
+			'desc_tip'    => true,
+			'description' => __( 'Enter the minimum number of days from today for delivery.', 'the-emily-boutique' ),
+		)
+	);
+	
+	// Delivery - Maximum Days
+	woocommerce_wp_text_input(
+		array(
+			'id'          => '_teb_delivery_max_days',
+			'label'       => __( 'Delivery – latest days from today', 'the-emily-boutique' ),
+			'placeholder' => '8',
+			'type'        => 'number',
+			'custom_attributes' => array(
+				'step' => '1',
+				'min'  => '0',
+			),
+			'desc_tip'    => true,
+			'description' => __( 'Enter the maximum number of days from today for delivery.', 'the-emily-boutique' ),
+		)
+	);
+	
+	// Delivery Cost
+	woocommerce_wp_text_input(
+		array(
+			'id'          => '_teb_delivery_cost',
+			'label'       => __( 'Delivery Cost', 'the-emily-boutique' ),
+			'placeholder' => __( 'e.g., £5.99', 'the-emily-boutique' ),
+			'desc_tip'    => true,
+			'description' => __( 'Enter the delivery cost for this product.', 'the-emily-boutique' ),
+		)
+	);
+	
+	// Returns Policy
+	woocommerce_wp_text_input(
+		array(
+			'id'          => '_teb_returns_policy',
+			'label'       => __( 'Returns Policy', 'the-emily-boutique' ),
+			'placeholder' => __( 'e.g., 30 days return policy', 'the-emily-boutique' ),
+			'desc_tip'    => true,
+			'description' => __( 'Enter the returns policy for this product.', 'the-emily-boutique' ),
+		)
+	);
+	
+	// Dispatched From
+	woocommerce_wp_text_input(
+		array(
+			'id'          => '_teb_dispatched_from',
+			'label'       => __( 'Dispatched From', 'the-emily-boutique' ),
+			'placeholder' => __( 'e.g., London, UK', 'the-emily-boutique' ),
+			'desc_tip'    => true,
+			'description' => __( 'Enter the location this product is dispatched from.', 'the-emily-boutique' ),
+		)
+	);
+}
+add_action( 'woocommerce_product_options_shipping', 'the_emily_boutique_add_delivery_fields' );
+
+/**
+ * Save Delivery & Return Policies fields
+ */
+function the_emily_boutique_save_delivery_fields( $product ) {
+	// Delivery - Minimum Days
+	if ( isset( $_POST['_teb_delivery_min_days'] ) ) {
+		$min_days = absint( $_POST['_teb_delivery_min_days'] );
+		$product->update_meta_data( '_teb_delivery_min_days', $min_days );
+	} else {
+		$product->delete_meta_data( '_teb_delivery_min_days' );
+	}
+	
+	// Delivery - Maximum Days
+	if ( isset( $_POST['_teb_delivery_max_days'] ) ) {
+		$max_days = absint( $_POST['_teb_delivery_max_days'] );
+		$product->update_meta_data( '_teb_delivery_max_days', $max_days );
+	} else {
+		$product->delete_meta_data( '_teb_delivery_max_days' );
+	}
+	
+	// Delivery Cost
+	if ( isset( $_POST['_teb_delivery_cost'] ) ) {
+		$product->update_meta_data( '_teb_delivery_cost', sanitize_text_field( $_POST['_teb_delivery_cost'] ) );
+	}
+	
+	// Returns Policy
+	if ( isset( $_POST['_teb_returns_policy'] ) ) {
+		$product->update_meta_data( '_teb_returns_policy', sanitize_text_field( $_POST['_teb_returns_policy'] ) );
+	}
+	
+	// Dispatched From
+	if ( isset( $_POST['_teb_dispatched_from'] ) ) {
+		$product->update_meta_data( '_teb_dispatched_from', sanitize_text_field( $_POST['_teb_dispatched_from'] ) );
+	}
+}
+add_action( 'woocommerce_admin_process_product_object', 'the_emily_boutique_save_delivery_fields' );
+
+/**
+ * Display Delivery & Return Policies box on single product page
+ */
+function the_emily_boutique_display_delivery_box() {
+	global $product;
+	
+	if ( ! $product ) {
+		return;
+	}
+	
+	$min_days = $product->get_meta( '_teb_delivery_min_days' );
+	$max_days = $product->get_meta( '_teb_delivery_max_days' );
+	$delivery_cost = $product->get_meta( '_teb_delivery_cost' );
+	$returns_policy = $product->get_meta( '_teb_returns_policy' );
+	$dispatched_from = $product->get_meta( '_teb_dispatched_from' );
+	
+	// Calculate delivery date(s) if min/max days are set
+	$delivery_text = '';
+	if ( ! empty( $min_days ) || ! empty( $max_days ) ) {
+		$now = current_time( 'timestamp' );
+		
+		if ( ! empty( $min_days ) && ! empty( $max_days ) ) {
+			// Both min and max are set
+			$start = date_i18n( 'd M', strtotime( "+{$min_days} days", $now ) );
+			$end = date_i18n( 'd M', strtotime( "+{$max_days} days", $now ) );
+			$delivery_text = sprintf(
+				/* translators: %1$s: start date, %2$s: end date */
+				__( 'Order today to get by <strong>%1$s-%2$s</strong>', 'the-emily-boutique' ),
+				esc_html( $start ),
+				esc_html( $end )
+			);
+		} elseif ( ! empty( $min_days ) ) {
+			// Only min is set
+			$start = date_i18n( 'd M', strtotime( "+{$min_days} days", $now ) );
+			$delivery_text = sprintf(
+				/* translators: %s: delivery date */
+				__( 'Order today to get by <strong>%s</strong>', 'the-emily-boutique' ),
+				esc_html( $start )
+			);
+		}
+	}
+	
+	// Only display if at least one field is filled
+	if ( empty( $delivery_text ) && empty( $delivery_cost ) && empty( $returns_policy ) && empty( $dispatched_from ) ) {
+		return;
+	}
+	
+	?>
+	<section class="product-delivery-box">
+		<h3 class="product-delivery-title"><?php esc_html_e( 'Delivery and return policies', 'the-emily-boutique' ); ?></h3>
+		<ul class="product-delivery-list">
+			<?php if ( ! empty( $delivery_text ) ) : ?>
+				<li>
+					<span class="product-delivery-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" height="20" fill="currentColor">
+							<path d="M224 64C206.3 64 192 78.3 192 96L192 128L160 128C124.7 128 96 156.7 96 192L96 240L544 240L544 192C544 156.7 515.3 128 480 128L448 128L448 96C448 78.3 433.7 64 416 64C398.3 64 384 78.3 384 96L384 128L256 128L256 96C256 78.3 241.7 64 224 64zM96 288L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 288L96 288z"/>
+						</svg>
+					</span>
+					<span><?php echo wp_kses_post( $delivery_text ); ?></span>
+				</li>
+			<?php endif; ?>
+			
+			<?php if ( ! empty( $returns_policy ) ) : ?>
+				<li>
+					<span class="product-delivery-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" height="20" fill="currentColor">
+							<path d="M560.3 301.2C570.7 313 588.6 315.6 602.1 306.7C616.8 296.9 620.8 277 611 262.3L563 190.3C560.2 186.1 556.4 182.6 551.9 180.1L351.4 68.7C332.1 58 308.6 58 289.2 68.7L88.8 180C83.4 183 79.1 187.4 76.2 192.8L27.7 282.7C15.1 306.1 23.9 335.2 47.3 347.8L80.3 365.5L80.3 418.8C80.3 441.8 92.7 463.1 112.7 474.5L288.7 574.2C308.3 585.3 332.2 585.3 351.8 574.2L527.8 474.5C547.9 463.1 560.2 441.9 560.2 418.8L560.2 301.3zM320.3 291.4L170.2 208L320.3 124.6L470.4 208L320.3 291.4zM278.8 341.6L257.5 387.8L91.7 299L117.1 251.8L278.8 341.6z"/>
+						</svg>
+					</span>
+					<span><?php echo esc_html( $returns_policy ); ?></span>
+				</li>
+			<?php endif; ?>
+			
+			<?php if ( ! empty( $delivery_cost ) ) : ?>
+				<li>
+					<span class="product-delivery-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" height="20" fill="currentColor">
+							<path d="M32 160C32 124.7 60.7 96 96 96L384 96C419.3 96 448 124.7 448 160L448 192L498.7 192C515.7 192 532 198.7 544 210.7L589.3 256C601.3 268 608 284.3 608 301.3L608 448C608 483.3 579.3 512 544 512L540.7 512C530.3 548.9 496.3 576 456 576C415.7 576 381.8 548.9 371.3 512L268.7 512C258.3 548.9 224.3 576 184 576C143.7 576 109.8 548.9 99.3 512L96 512C60.7 512 32 483.3 32 448L32 160zM544 352L544 301.3L498.7 256L448 256L448 352L544 352zM224 488C224 465.9 206.1 448 184 448C161.9 448 144 465.9 144 488C144 510.1 161.9 528 184 528C206.1 528 224 510.1 224 488zM456 528C478.1 528 496 510.1 496 488C496 465.9 478.1 448 456 448C433.9 448 416 465.9 416 488C416 510.1 433.9 528 456 528z"/>
+						</svg>
+					</span>
+					<span><?php esc_html_e( 'Delivery cost:', 'the-emily-boutique' ); ?> <?php echo esc_html( $delivery_cost ); ?></span>
+				</li>
+			<?php endif; ?>
+			
+			<?php if ( ! empty( $dispatched_from ) ) : ?>
+				<li>
+					<span class="product-delivery-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" height="20" fill="currentColor">
+							<path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z"/>
+						</svg>
+					</span>
+					<span><?php esc_html_e( 'Dispatched from:', 'the-emily-boutique' ); ?> <?php echo esc_html( $dispatched_from ); ?></span>
+				</li>
+			<?php endif; ?>
+		</ul>
+	</section>
+	<?php
+}
+add_action( 'woocommerce_single_product_summary', 'the_emily_boutique_display_delivery_box', 25 );
+

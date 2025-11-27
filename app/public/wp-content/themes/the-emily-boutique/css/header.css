@@ -592,7 +592,8 @@
 	}
 	
 	.primary-navigation ul li.menu-item-open > ul {
-		display: block;
+		display: flex;
+		flex-direction: column;
 	}
 	
 	.primary-navigation ul ul li {
@@ -600,16 +601,17 @@
 	}
 	
 	.primary-navigation ul ul a {
-		padding: var(--spacing-xs) 0;
+		padding: var(--spacing-sm) var(--spacing-md);
 		font-size: 0.875rem;
 		opacity: 0.9;
+		color: var(--color-white);
 	}
 	
 	.primary-navigation ul ul a:hover,
 	.primary-navigation ul ul a:focus {
 		opacity: 1;
 		color: var(--color-gold);
-		padding-left: var(--spacing-xs);
+		background-color: rgba(217, 176, 102, 0.15);
 	}
 }
 
