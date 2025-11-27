@@ -255,9 +255,12 @@ body.tax-product_tag .site-main .woocommerce {
 .woocommerce-page ul.products li.product {
 	width: 100%;
 	margin: 0;
-	padding-bottom: 20px;
+	padding-bottom: var(--spacing-md);
 	list-style: none;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
 /* Product image container for consistent sizing */
@@ -283,6 +286,14 @@ body.tax-product_tag .site-main .woocommerce {
 .woocommerce ul.products li.product .woocommerce-loop-product__title,
 .woocommerce ul.products li.product h3 {
 	padding: 10px var(--spacing-md);
+	min-height: 3.5em; /* Fixed min-height for 2 lines */
+	display: flex;
+	align-items: flex-start;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title a,
+.woocommerce ul.products li.product h3 a {
+	line-height: 1.4;
 }
 
 .woocommerce:where(body:not(.woocommerce-uses-block-theme)) ul.products li.product .price {
@@ -296,6 +307,7 @@ body.tax-product_tag .site-main .woocommerce {
 .product .woocommerce-loop-product__link {
 	display: block;
 	text-decoration: none;
+	flex-shrink: 0;
 }
 
 .product .woocommerce-loop-product__link:hover {
@@ -309,5 +321,28 @@ body.tax-product_tag .site-main .woocommerce {
 
 .product .woocommerce-loop-product__title a:hover {
 	color: var(--color-deep-rose);
+}
+
+/* Ensure product cards use flexbox layout */
+.woocommerce ul.products li.product {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Content area that grows to push button down */
+.woocommerce ul.products li.product > *:not(.woocommerce-loop-product__link):not(.button):not(.added_to_cart) {
+	flex-shrink: 0;
+}
+
+/* Button area - pushes to bottom */
+.woocommerce ul.products li.product .button,
+.woocommerce ul.products li.product a.button,
+.woocommerce ul.products li.product .added_to_cart,
+.woocommerce ul.products li.product a.added_to_cart {
+	margin-top: auto;
+	margin-left: var(--spacing-md);
+	margin-right: var(--spacing-md);
+	margin-bottom: var(--spacing-sm);
+	width: auto;
 }
 

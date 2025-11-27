@@ -271,7 +271,6 @@ body.page[class*="contact"] .nf-form-cont input[type="url"]:focus,
 body.page[class*="contact"] .nf-form-cont textarea:focus,
 body.page[class*="contact"] .nf-form-cont select:focus {
 	outline: 1px solid var(--color-deep-rose) !important;
-	/* outline-offset: 2px !important; */
 	border-color: var(--color-deep-rose) !important;
 }
 

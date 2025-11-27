@@ -198,6 +198,47 @@ add_filter( 'woocommerce_product_add_to_cart_text', 'the_emily_boutique_add_to_c
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'the_emily_boutique_add_to_cart_text' );
 
 /**
+ * Change "View cart" text to "View basket" across the site
+ */
+function the_emily_boutique_change_view_cart_text( $translated_text, $text, $domain ) {
+	// Only change WooCommerce domain strings
+	if ( $domain === 'woocommerce' ) {
+		// Change "View cart" to "View basket"
+		if ( $text === 'View cart' || $text === 'View Cart' ) {
+			return __( 'View basket', 'the-emily-boutique' );
+		}
+		// Change "View my cart" to "View my basket"
+		if ( $text === 'View my cart' || $text === 'View My Cart' ) {
+			return __( 'View my basket', 'the-emily-boutique' );
+		}
+		// Change standalone "in cart" strings (e.g. mini cart counters)
+		if ( $text === 'in cart' || $text === 'In cart' || $text === 'In Cart' ) {
+			return __( 'in basket', 'the-emily-boutique' );
+		}
+		// Change "%s in cart" to "%s in basket" for Product Blocks
+		if ( $text === '%s in cart' ) {
+			return __( '%s in basket', 'the-emily-boutique' );
+		}
+		// Change "Added to cart" to "Added to basket"
+		if ( $text === 'Added to cart' ) {
+			return __( 'Added to basket', 'the-emily-boutique' );
+		}
+	}
+	
+	return $translated_text;
+}
+add_filter( 'gettext', 'the_emily_boutique_change_view_cart_text', 20, 3 );
+
+/**
+ * Replace cart item count text with basket wording.
+ */
+function the_emily_boutique_cart_item_count_text( $text, $count ) {
+	$basket_text = _n( '%d in basket', '%d in basket', $count, 'the-emily-boutique' );
+	return sprintf( $basket_text, $count );
+}
+add_filter( 'woocommerce_cart_item_count_text', 'the_emily_boutique_cart_item_count_text', 10, 2 );
+
+/**
  * Remove checkmark icon from add to cart button
  */
 function the_emily_boutique_remove_checkmark_from_button( $args, $product ) {
