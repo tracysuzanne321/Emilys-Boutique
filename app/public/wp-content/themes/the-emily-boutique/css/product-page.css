@@ -3,6 +3,19 @@
    ============================================ */
 
 /* Delivery & Return Policies Box */
+
+.woocommerce-breadcrumb{
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 var(--container-padding);
+}
+.woocommerce div.product{
+	max-width: 1280px;
+	margin: 0 auto;
+	background-color: var(--color-white);
+	border-radius: var(--radius-lg);
+	box-shadow: 0 8px 24px rgba(45, 58, 83, 0.08);
+}
 .product-delivery-box {
 	background-color: var(--color-cream);
 	padding: 1.5rem 2rem;
@@ -139,8 +152,10 @@
 	justify-content: center;
 	min-height: 400px;
 	width: 100%;
-	max-width: 100%;
+	max-width: 1280px; /* Fixed max-width */
 	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .woocommerce-product-gallery__image img {
@@ -488,14 +503,14 @@
 
 /* Add to Basket Button */
 .single-product .summary .single_add_to_cart_button {
-	background-color: var(--color-navy);
-	color: var(--color-white);
-	border: 2px solid var(--color-navy);
+	background-color: var(--color-navy) !important;
+	color: var(--color-white) !important;
+	border: 2px solid var(--color-navy) !important;
 	border-radius: var(--radius-sm);
-	padding: 14px 28px;
+	padding: 12px 24px;
 	font-family: var(--font-body);
 	font-weight: 600;
-	font-size: 1rem;
+	font-size: 0.875rem;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 	transition: all 0.3s ease;
@@ -508,9 +523,9 @@
 .single-product .summary .single_add_to_cart_button:hover,
 .single-product .summary .single_add_to_cart_button:focus,
 .single-product .summary .single_add_to_cart_button:focus-visible {
-	background-color: var(--color-deep-rose);
-	color: var(--color-white);
-	border-color: var(--color-deep-rose);
+	background-color: var(--color-deep-rose) !important;
+	color: var(--color-white) !important;
+	border-color: var(--color-deep-rose) !important;
 }
 
 .single-product .summary .single_add_to_cart_button:disabled {

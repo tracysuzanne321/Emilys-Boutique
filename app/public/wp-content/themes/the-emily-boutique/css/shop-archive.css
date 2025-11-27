@@ -24,7 +24,8 @@
 	list-style: none;
 }
 
-.product {
+/* Scoped to .products .product to avoid affecting Single Product Page main container */
+.products .product {
 	background-color: var(--color-white);
 	border-radius: var(--radius-md);
 	overflow: hidden;
@@ -37,18 +38,18 @@
 	padding-bottom: var(--spacing-md);
 }
 
-.product:hover {
+.products .product:hover {
 	transform: translateY(-4px);
 	box-shadow: var(--shadow-medium);
 }
 
-.product img {
+.products .product img {
 	width: 100%;
 	height: auto;
 	flex-shrink: 0;
 }
 
-.product .woocommerce-loop-product__link {
+.products .product .woocommerce-loop-product__link {
 	display: block;
 	flex-shrink: 0;
 }
@@ -61,7 +62,7 @@
 	padding: 0;
 }
 
-.product .woocommerce-loop-product__title {
+.products .product .woocommerce-loop-product__title {
 	font-family: var(--font-heading);
 	font-size: 1.25rem;
 	margin: var(--spacing-sm) 0;
@@ -72,11 +73,11 @@
 	flex-shrink: 0;
 }
 
-.product .woocommerce-loop-product__title a {
+.products .product .woocommerce-loop-product__title a {
 	line-height: 1.4;
 }
 
-.product .price {
+.products .product .price {
 	color: var(--color-deep-rose);
 	font-weight: 600;
 	font-size: 1.125rem;
@@ -99,7 +100,7 @@
 	flex-grow: 1;
 }
 
-.product .button,
+.products .product .button,
 .woocommerce ul.products li.product .button,
 .woocommerce ul.products li.product a.button {
 	display: block;
@@ -131,8 +132,8 @@
 }
 
 /* Remove checkmark/tick icon from add to cart button */
-.product .button::before,
-.product .button::after,
+.products .product .button::before,
+.products .product .button::after,
 .woocommerce ul.products li.product .button::before,
 .woocommerce ul.products li.product .button::after,
 .woocommerce ul.products li.product a.button::before,
@@ -141,28 +142,28 @@
 	content: none !important;
 }
 
-.product .button svg,
+.products .product .button svg,
 .woocommerce ul.products li.product .button svg,
 .woocommerce ul.products li.product a.button svg,
-.product .button .wc-block-components-icon,
+.products .product .button .wc-block-components-icon,
 .woocommerce ul.products li.product .button .wc-block-components-icon {
 	display: none !important;
 }
 
-.product .button .icon,
+.products .product .button .icon,
 .woocommerce ul.products li.product .button .icon,
 .woocommerce ul.products li.product a.button .icon,
-.product .button [class*="icon"],
+.products .product .button [class*="icon"],
 .woocommerce ul.products li.product .button [class*="icon"],
 .woocommerce ul.products li.product a.button [class*="icon"],
-.product .button [class*="check"],
+.products .product .button [class*="check"],
 .woocommerce ul.products li.product .button [class*="check"],
 .woocommerce ul.products li.product a.button [class*="check"] {
 	display: none !important;
 }
 
-.product .button:hover,
-.product .button:focus,
+.products .product .button:hover,
+.products .product .button:focus,
 .woocommerce ul.products li.product .button:hover,
 .woocommerce ul.products li.product .button:focus,
 .woocommerce ul.products li.product a.button:hover,
@@ -171,4 +172,3 @@
 	color: var(--color-white) !important;
 	border-color: var(--color-deep-rose) !important;
 }
-
