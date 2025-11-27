@@ -346,3 +346,9 @@ body.tax-product_tag .site-main .woocommerce {
 	width: auto;
 }
 
+/* Mobile Grid Override for Product Template Block */
+@media (max-width: 480px) {
+	.wc-block-product-template__responsive.columns-4 {
+		grid-template-columns: repeat(1, 1fr) !important;
+	}
+}

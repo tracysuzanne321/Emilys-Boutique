@@ -256,7 +256,7 @@
 
 .categories-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	gap: var(--spacing-lg);
 	margin-top: var(--spacing-lg);
 }
@@ -361,62 +361,216 @@
 	margin-top: var(--spacing-lg);
 }
 
-/* WooCommerce Block Product Grid - Button Alignment */
-.wc-block-product-template .wc-block-grid__product,
-.wp-block-woocommerce-product-grid .wc-block-grid__product,
-.wc-block-grid__product,
-.wp-block-woocommerce-featured-product .wc-block-grid__product,
-.wp-block-woocommerce-handpicked-products .wc-block-grid__product,
-.wp-block-woocommerce-product-best-sellers .wc-block-grid__product,
-.wp-block-woocommerce-product-new .wc-block-grid__product,
-.wp-block-woocommerce-product-on-sale .wc-block-grid__product,
-.wp-block-woocommerce-product-top-rated .wc-block-grid__product {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	padding-bottom: var(--spacing-md);
+/* ============================================
+   Featured Products Block - Product Collection / Product Template
+   Scoped to .featured-products wrapper or WooCommerce block classes
+   ============================================ */
+
+/* 
+ * Product Card Container - Flex Column Layout
+ * Works with: woocommerce/product-collection + woocommerce/product-template
+ */
+.featured-products .wc-block-product,
+.featured-products .product,
+.wp-block-woocommerce-product-collection .wc-block-product,
+.wp-block-woocommerce-product-template .wc-block-product,
+.wc-block-product-template .wc-block-product {
+	display: flex !important;
+	flex-direction: column !important;
+	height: 100% !important;
+	padding: 0 0 var(--spacing-md) 0 !important;
+	box-sizing: border-box;
 }
 
-.wc-block-product-template .wc-block-grid__product .wc-block-grid__product-title,
-.wp-block-woocommerce-product-grid .wc-block-grid__product .wc-block-grid__product-title,
-.wc-block-grid__product .wc-block-grid__product-title,
-.wp-block-woocommerce-featured-product .wc-block-grid__product .wc-block-grid__product-title,
-.wp-block-woocommerce-handpicked-products .wc-block-grid__product .wc-block-grid__product-title,
-.wp-block-woocommerce-product-best-sellers .wc-block-grid__product .wc-block-grid__product-title,
-.wp-block-woocommerce-product-new .wc-block-grid__product .wc-block-grid__product-title,
-.wp-block-woocommerce-product-on-sale .wc-block-grid__product .wc-block-grid__product-title,
-.wp-block-woocommerce-product-top-rated .wc-block-grid__product .wc-block-grid__product-title {
-	min-height: 3.5em; /* Fixed min-height for 2 lines */
+/* Product Link Wrapper - Contains image, title, price */
+.featured-products .wc-block-product > a,
+.featured-products .wc-block-product .wc-block-components-product-image,
+.wp-block-woocommerce-product-collection .wc-block-product > a,
+.wc-block-product-template .wc-block-product > a {
+	display: block;
+	flex-shrink: 0;
+}
+
+/* Product Title - Fixed Height for Alignment */
+.featured-products .wc-block-product .wc-block-components-product-title,
+.featured-products .wc-block-product .wp-block-post-title,
+.wp-block-woocommerce-product-collection .wc-block-product .wc-block-components-product-title,
+.wc-block-product-template .wc-block-product .wc-block-components-product-title {
+	min-height: 3em;
 	display: flex;
 	align-items: flex-start;
+	flex-shrink: 0;
+	padding: 0 var(--spacing-md);
+	margin-bottom: var(--spacing-xs);
 }
 
-.wc-block-product-template .wc-block-grid__product .wc-block-components-product-button,
-.wp-block-woocommerce-product-grid .wc-block-grid__product .wc-block-components-product-button,
-.wc-block-grid__product .wc-block-components-product-button,
-.wp-block-woocommerce-featured-product .wc-block-grid__product .wc-block-components-product-button,
-.wp-block-woocommerce-handpicked-products .wc-block-grid__product .wc-block-components-product-button,
-.wp-block-woocommerce-product-best-sellers .wc-block-grid__product .wc-block-components-product-button,
-.wp-block-woocommerce-product-new .wc-block-grid__product .wc-block-components-product-button,
-.wp-block-woocommerce-product-on-sale .wc-block-grid__product .wc-block-components-product-button,
-.wp-block-woocommerce-product-top-rated .wc-block-grid__product .wc-block-components-product-button {
-	margin-top: auto;
-	margin-left: var(--spacing-md);
-	margin-right: var(--spacing-md);
-	margin-bottom: var(--spacing-sm);
+/* Product Price */
+.featured-products .wc-block-product .wc-block-components-product-price,
+.wp-block-woocommerce-product-collection .wc-block-product .wc-block-components-product-price,
+.wc-block-product-template .wc-block-product .wc-block-components-product-price {
+	color: var(--color-deep-rose) !important;
+	font-weight: 600 !important;
+	font-size: 1rem !important;
+	margin-bottom: var(--spacing-sm) !important;
+	padding: 0 var(--spacing-md) !important;
+	flex-shrink: 0;
 }
+
+/* 
+ * ADD TO BASKET BUTTON - Pinned to Bottom
+ * Uses margin-top: auto to push to bottom of flex container
+ * IMPORTANT: Must handle ALL button states (default, loading, added)
+ */
+.featured-products .wc-block-product .wc-block-components-product-button,
+.featured-products .wc-block-product .wp-block-button,
+.wp-block-woocommerce-product-collection .wc-block-product .wc-block-components-product-button,
+.wc-block-product-template .wc-block-product .wc-block-components-product-button {
+	margin-top: auto !important;
+	margin-left: var(--spacing-md) !important;
+	margin-right: var(--spacing-md) !important;
+	margin-bottom: 0 !important;
+	flex-shrink: 0 !important;
+	/* Prevent the container from changing size during state changes */
+	min-height: 48px !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+/* Button Inner Element Styling - ALL STATES */
+.featured-products .wc-block-product .wc-block-components-product-button .wc-block-components-product-button__button,
+.featured-products .wc-block-product .wc-block-components-product-button .wp-block-button__link,
+.featured-products .wc-block-product .wc-block-components-product-button button,
+.featured-products .wc-block-product .wc-block-components-product-button a,
+.featured-products .wc-block-product .wp-block-button__link,
+.wp-block-woocommerce-product-collection .wc-block-product .wc-block-components-product-button__button,
+.wc-block-product-template .wc-block-product .wc-block-components-product-button__button,
+.wc-block-product-template .wc-block-product .wc-block-components-product-button button,
+.wc-block-product-template .wc-block-product .wc-block-components-product-button a {
+	display: inline-block !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+	padding: 12px 24px !important;
+	background-color: var(--color-navy) !important;
+	color: var(--color-white) !important;
+	border: 2px solid var(--color-navy) !important;
+	border-radius: var(--radius-sm) !important;
+	font-family: var(--font-body) !important;
+	font-weight: 600 !important;
+	font-size: 0.875rem !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.5px !important;
+	text-decoration: none !important;
+	text-align: center !important;
+	cursor: pointer !important;
+	transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+	line-height: 1.4 !important;
+	/* Prevent size changes */
+	min-height: 44px !important;
+	margin: 0 !important;
+}
+
+/* Button Loading State - Keep same size */
+.featured-products .wc-block-product .wc-block-components-product-button.is-loading .wc-block-components-product-button__button,
+.featured-products .wc-block-product .wc-block-components-product-button .wc-block-components-product-button__button.loading,
+.featured-products .wc-block-product .wc-block-components-product-button .wc-block-components-product-button__button[disabled],
+.wc-block-product-template .wc-block-product .wc-block-components-product-button.is-loading .wc-block-components-product-button__button,
+.wc-block-product-template .wc-block-product .wc-block-components-product-button .wc-block-components-product-button__button.loading {
+	background-color: var(--color-navy) !important;
+	color: var(--color-white) !important;
+	border-color: var(--color-navy) !important;
+	opacity: 0.7 !important;
+	cursor: wait !important;
+	/* Keep same dimensions */
+	padding: 12px 24px !important;
+	min-height: 44px !important;
+}
+
+/* Button Added State - Keep same size, change color to indicate success */
+.featured-products .wc-block-product .wc-block-components-product-button .wc-block-components-product-button__button.added,
+.featured-products .wc-block-product .wc-block-components-product-button.is-added .wc-block-components-product-button__button,
+.wc-block-product-template .wc-block-product .wc-block-components-product-button .wc-block-components-product-button__button.added,
+.wc-block-product-template .wc-block-product .wc-block-components-product-button.is-added .wc-block-components-product-button__button {
+	background-color: var(--color-deep-rose) !important;
+	color: var(--color-white) !important;
+	border-color: var(--color-deep-rose) !important;
+	/* Keep same dimensions */
+	padding: 12px 24px !important;
+	min-height: 44px !important;
+}
+
+/* Button Hover State */
+.featured-products .wc-block-product .wc-block-components-product-button .wc-block-components-product-button__button:hover,
+.featured-products .wc-block-product .wc-block-components-product-button .wp-block-button__link:hover,
+.featured-products .wc-block-product .wp-block-button__link:hover,
+.wp-block-woocommerce-product-collection .wc-block-product .wc-block-components-product-button__button:hover,
+.wc-block-product-template .wc-block-product .wc-block-components-product-button__button:hover {
+	background-color: var(--color-deep-rose) !important;
+	color: var(--color-white) !important;
+	border-color: var(--color-deep-rose) !important;
+}
+
+/* 
+ * VIEW BASKET LINK - Hide completely to prevent layout shift
+ * This appears after adding to cart. We hide it in Featured Products.
+ * The "added_to_cart" link is what causes the button to jump up.
+ */
+.featured-products .wc-block-product .added_to_cart,
+.featured-products .wc-block-product a.added_to_cart,
+.featured-products .wc-block-product .wc-forward,
+.featured-products .wc-block-product .wc-block-components-product-button + a,
+.featured-products .wc-block-product .wc-block-components-product-button a.added_to_cart,
+.wp-block-woocommerce-product-collection .wc-block-product .added_to_cart,
+.wp-block-woocommerce-product-collection .wc-block-product a.added_to_cart,
+.wc-block-product-template .wc-block-product .added_to_cart,
+.wc-block-product-template .wc-block-product a.added_to_cart,
+/* Also hide any "View cart" text that might appear inside the button container */
+.featured-products .wc-block-product .wc-block-components-product-button .added_to_cart,
+.wc-block-product-template .wc-block-product .wc-block-components-product-button .added_to_cart {
+	display: none !important;
+	visibility: hidden !important;
+	height: 0 !important;
+	width: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	position: absolute !important;
+	pointer-events: none !important;
+}
+
+/* 
+ * Alternative: If you want to show "View Basket" as a small text link instead of hiding:
+ * Uncomment the block below and comment out the display: none above
+ */
+/*
+.featured-products .wc-block-product .added_to_cart,
+.featured-products .wc-block-product a.added_to_cart {
+	display: inline-block !important;
+	padding: 4px 0 !important;
+	margin: var(--spacing-xs) var(--spacing-md) 0 !important;
+	background: none !important;
+	border: none !important;
+	color: var(--color-deep-rose) !important;
+	font-size: 0.75rem !important;
+	font-weight: 500 !important;
+	text-decoration: underline !important;
+	text-transform: none !important;
+}
+*/
 
 .wc-block-product-template {
 	margin-top: var(--spacing-xl) !important;
 }
 
-/* View Cart Link in Product Cards */
-.product .added_to_cart,
-.product a.added_to_cart,
-.product .wc-forward,
-.featured-products .product .added_to_cart,
-.featured-products .product a.added_to_cart,
-.featured-products .product .wc-forward {
+/* ============================================
+   Legacy/Classic WooCommerce Product Cards (Non-Block)
+   Keep for shop archive pages, related products, etc.
+   ============================================ */
+
+/* View Cart Link in Classic Product Cards - NOT Featured Products Block */
+.products:not(.wc-block-product-template) .product .added_to_cart,
+.products:not(.wc-block-product-template) .product a.added_to_cart,
+.products:not(.wc-block-product-template) .product .wc-forward {
 	display: inline-block;
 	padding: 10px 20px;
 	color: var(--color-deep-rose);
@@ -432,28 +586,53 @@
 	margin-left: var(--spacing-md);
 	margin-right: var(--spacing-md);
 	margin-bottom: var(--spacing-sm);
-	margin-top: auto; /* Push to bottom */
+	margin-top: auto;
 }
 
-.product .added_to_cart:hover,
-.product a.added_to_cart:hover,
-.product .wc-forward:hover,
-.featured-products .product .added_to_cart:hover,
-.featured-products .product a.added_to_cart:hover,
-.featured-products .product .wc-forward:hover {
+.products:not(.wc-block-product-template) .product .added_to_cart:hover,
+.products:not(.wc-block-product-template) .product a.added_to_cart:hover,
+.products:not(.wc-block-product-template) .product .wc-forward:hover {
 	color: var(--color-gold);
 	text-decoration: underline;
 }
 
-/* WooCommerce Block Product Buttons - Match Theme Button Styles */
-.wp-block-button.wc-block-components-product-button,
-.wc-block-components-product-button,
+/* ============================================
+   WooCommerce Block Product Grid (Legacy Blocks)
+   For older WooCommerce blocks like Products by Category, etc.
+   ============================================ */
+
+.wc-block-grid__product {
+	display: flex !important;
+	flex-direction: column;
+	height: 100%;
+	padding-bottom: var(--spacing-md);
+}
+
+.wc-block-grid__product .wc-block-grid__product-title {
+	min-height: 3.5em;
+	display: flex;
+	align-items: flex-start;
+	flex-grow: 0;
+}
+
+.wc-block-grid__product .wc-block-components-product-button,
+.wc-block-grid__product .wc-block-grid__product-add-to-cart,
+.wc-block-grid__product .wp-block-button {
+	margin-top: auto !important;
+	margin-left: var(--spacing-md);
+	margin-right: var(--spacing-md);
+	margin-bottom: var(--spacing-sm);
+}
+
+.wc-block-grid__product .wc-block-grid__product-link {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Legacy Block Button Styling */
 .wc-block-grid__product .wc-block-components-product-button .wp-block-button__link,
 .wc-block-grid__product .wp-block-button.wc-block-components-product-button .wp-block-button__link {
-	margin-bottom: var(--spacing-sm) !important;
-	margin-left: var(--spacing-md) !important;
-	margin-right: var(--spacing-md) !important;
-	margin-top: auto !important;
 	background-color: var(--color-navy) !important;
 	color: var(--color-white) !important;
 	border: 2px solid var(--color-navy) !important;
@@ -464,27 +643,24 @@
 	text-transform: uppercase !important;
 	letter-spacing: 0.5px !important;
 	text-decoration: none !important;
+	padding: 12px 24px !important;
 }
 
-.wp-block-button.wc-block-components-product-button:hover .wp-block-button__link,
-.wp-block-button.wc-block-components-product-button:focus .wp-block-button__link,
-.wc-block-components-product-button:hover,
-.wc-block-components-product-button:focus,
 .wc-block-grid__product .wc-block-components-product-button .wp-block-button__link:hover,
-.wc-block-grid__product .wc-block-components-product-button .wp-block-button__link:focus {
+.wc-block-grid__product .wp-block-button.wc-block-components-product-button .wp-block-button__link:hover {
 	background-color: var(--color-deep-rose) !important;
 	color: var(--color-white) !important;
 	border-color: var(--color-deep-rose) !important;
 }
 
-.wp-block-post-title :where(a){
+.wp-block-post-title :where(a) {
 	color: var(--color-navy) !important;
 }
 
-.wc-block-components-product-price{
-color: var(--color-deep-rose) !important;
-font-weight: 600 !important;
-font-size: 1rem !important;
-margin-bottom: 10px !important;
-padding: 0 var(--spacing-md) !important;
+.wc-block-components-product-price {
+	color: var(--color-deep-rose) !important;
+	font-weight: 600 !important;
+	font-size: 1rem !important;
+	margin-bottom: 10px !important;
+	padding: 0 var(--spacing-md) !important;
 }

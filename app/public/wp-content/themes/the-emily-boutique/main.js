@@ -42,7 +42,7 @@
 		window.addEventListener('resize', function() {
 			clearTimeout(resizeTimer);
 			resizeTimer = setTimeout(function() {
-				if (window.innerWidth > 767) {
+				if (window.innerWidth > 1024) {
 					primaryNav.classList.remove('active');
 					menuToggle.setAttribute('aria-expanded', 'false');
 				}
@@ -59,7 +59,7 @@
 		menuItemsWithChildren.forEach(function(menuLink) {
 			menuLink.addEventListener('click', function(e) {
 				// Only prevent default on mobile
-				if (window.innerWidth <= 767) {
+				if (window.innerWidth <= 1024) {
 					e.preventDefault();
 					const menuItem = this.parentElement;
 					menuItem.classList.toggle('menu-item-open');

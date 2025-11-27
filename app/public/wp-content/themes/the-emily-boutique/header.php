@@ -34,6 +34,14 @@
 	
 	<nav id="site-navigation" class="primary-navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'the-emily-boutique' ); ?>">
 		<div class="nav-container">
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+				<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'the-emily-boutique' ); ?></span>
+				<div class="hamburger-icon">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</button>
 			<?php
 			wp_nav_menu(
 				array(
