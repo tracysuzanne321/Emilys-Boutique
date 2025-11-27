@@ -69,21 +69,42 @@
 							<?php
 						}
 						
-						if ( class_exists( 'WooCommerce' ) ) {
-							$privacy_page = wc_get_page_permalink( 'privacy' );
-							$terms_page = wc_get_page_permalink( 'terms' );
-							
-							if ( $privacy_page ) {
+						// Check for privacy policy page (regular WordPress page or WooCommerce page)
+						$privacy_page = get_page_by_path( 'privacy-policy' );
+						if ( ! $privacy_page && class_exists( 'WooCommerce' ) ) {
+							$privacy_url = wc_get_page_permalink( 'privacy' );
+							if ( $privacy_url ) {
 								?>
-								<li><a href="<?php echo esc_url( $privacy_page ); ?>"><?php esc_html_e( 'Privacy Policy', 'the-emily-boutique' ); ?></a></li>
+								<li><a href="<?php echo esc_url( $privacy_url ); ?>"><?php esc_html_e( 'Privacy Policy', 'the-emily-boutique' ); ?></a></li>
 								<?php
 							}
-							
-							if ( $terms_page ) {
+						} elseif ( $privacy_page ) {
+							?>
+							<li><a href="<?php echo esc_url( get_permalink( $privacy_page->ID ) ); ?>"><?php esc_html_e( 'Privacy Policy', 'the-emily-boutique' ); ?></a></li>
+							<?php
+						}
+						
+						// Check for returns policy page
+						$returns_page = get_page_by_path( 'returns-policy' );
+						if ( $returns_page ) {
+							?>
+							<li><a href="<?php echo esc_url( get_permalink( $returns_page->ID ) ); ?>"><?php esc_html_e( 'Returns Policy', 'the-emily-boutique' ); ?></a></li>
+							<?php
+						}
+						
+						// Check for terms and conditions page (regular WordPress page or WooCommerce page)
+						$terms_page = get_page_by_path( 'terms-conditions' );
+						if ( ! $terms_page && class_exists( 'WooCommerce' ) ) {
+							$terms_url = wc_get_page_permalink( 'terms' );
+							if ( $terms_url ) {
 								?>
-								<li><a href="<?php echo esc_url( $terms_page ); ?>"><?php esc_html_e( 'Terms & Conditions', 'the-emily-boutique' ); ?></a></li>
+								<li><a href="<?php echo esc_url( $terms_url ); ?>"><?php esc_html_e( 'Terms & Conditions', 'the-emily-boutique' ); ?></a></li>
 								<?php
 							}
+						} elseif ( $terms_page ) {
+							?>
+							<li><a href="<?php echo esc_url( get_permalink( $terms_page->ID ) ); ?>"><?php esc_html_e( 'Terms & Conditions', 'the-emily-boutique' ); ?></a></li>
+							<?php
 						}
 						?>
 					</ul>

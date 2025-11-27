@@ -537,3 +537,23 @@ function the_emily_boutique_display_delivery_box() {
 }
 add_action( 'woocommerce_single_product_summary', 'the_emily_boutique_display_delivery_box', 25 );
 
+/**
+ * Add introductory text to contact page before the form
+ */
+function the_emily_boutique_add_contact_intro( $content ) {
+	// Only on contact page (post ID 254)
+	if ( is_page( 254 ) || is_page( 'contact' ) ) {
+		$intro_text = '<div class="contact-intro">';
+		$intro_text .= '<p class="contact-intro-title"><strong>We\'d love to hear from you!</strong></p>';
+		$intro_text .= '<p>If you have a question about your order, need help with personalisation, or just want to say hello, please get in touch using the form below.</p>';
+		$intro_text .= '<p>We do our best to reply within 24–48 hours.</p>';
+		$intro_text .= '</div>';
+		
+		// Add the intro text before the content
+		$content = $intro_text . $content;
+	}
+	
+	return $content;
+}
+add_filter( 'the_content', 'the_emily_boutique_add_contact_intro', 5 );
+
