@@ -53,8 +53,7 @@
 /* Note: .site-header already has position: sticky, which works for absolute children */
 .wp-block-group,
 .wp-block-cover,
-.hero-section,
-.category-card {
+.hero-section {
 	position: relative;
 }
 
@@ -63,8 +62,7 @@
 .site-header .site-branding,
 .wp-block-group > *:not(.snow-container),
 .wp-block-cover > *:not(.snow-container),
-.hero-section > *:not(.snow-container),
-.category-card > *:not(.snow-container) {
+.hero-section > *:not(.snow-container) {
 	position: relative;
 	z-index: 2;
 }
