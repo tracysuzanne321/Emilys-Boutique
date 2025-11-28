@@ -2,12 +2,6 @@
    Single Product Page
    ============================================ */
 
-/* Hide WooCommerce notices wrapper on single product page */
-.single-product .woocommerce-notices-wrapper,
-.woocommerce.single-product .woocommerce-notices-wrapper {
-	display: none !important;
-}
-
 /* Delivery & Return Policies Box */
 
 .woocommerce-breadcrumb{
