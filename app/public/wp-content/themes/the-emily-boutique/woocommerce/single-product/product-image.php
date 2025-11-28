@@ -47,11 +47,12 @@ $wrapper_classes   = apply_filters(
 			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
 			echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
 		} else {
-			$wrapper_classname = $product->is_type( ProductType::VARIABLE ) && ! empty( $product->get_available_variations( 'image' ) ) ?
+			$wrapper_classname = $product->is_type( ProductType::VARIABLE ) ?
 				'woocommerce-product-gallery__image woocommerce-product-gallery__image--placeholder' :
 				'woocommerce-product-gallery__image--placeholder';
 			echo sprintf( '<div class="%s">', esc_attr( $wrapper_classname ) );
 			echo sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+			echo '</div>';
 			echo '</div>';
 		}
 		

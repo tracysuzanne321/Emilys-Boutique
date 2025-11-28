@@ -8,6 +8,12 @@
 	'use strict';
 
 	$(document).ready(function() {
+		// Check if Slick is available
+		if (typeof $.fn.slick === 'undefined') {
+			console.warn('Slick slider is not loaded. Please ensure Slick slider library is enqueued.');
+			return;
+		}
+		
 		var $gallery = $('.woocommerce-product-gallery');
 		
 		if ($gallery.length === 0) {
@@ -16,31 +22,24 @@
 
 		var $mainSlider = $gallery.find('.woocommerce-product-gallery__main');
 		var $thumbSlider = $gallery.find('.woocommerce-product-gallery__thumbnails');
+		
+		// Count total images in main slider
+		var mainImageCount = $mainSlider.find('.woocommerce-product-gallery__image').length;
+		var thumbImageCount = $thumbSlider.length > 0 ? $thumbSlider.find('.woocommerce-product-gallery__image').length : 0;
 
-		// Initialize main slider
-		if ($mainSlider.length > 0) {
-			$mainSlider.slick({
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				arrows: false,
-				dots: true,
-				fade: true,
-				asNavFor: $thumbSlider,
-				appendDots: $mainSlider,
-				responsive: [
-					{
-						breakpoint: 768,
-						settings: {
-							arrows: false,
-							dots: true
-						}
-					}
-				]
-			});
+		// Only initialize if there are multiple images
+		if (mainImageCount <= 1) {
+			// Single image - no slider needed
+			$gallery.css('opacity', '1');
+			if ($thumbSlider.length > 0) {
+				$thumbSlider.hide();
+			}
+			return;
 		}
 
-		// Initialize thumbnail slider
-		if ($thumbSlider.length > 0 && $thumbSlider.find('.woocommerce-product-gallery__image').length > 1) {
+		// Initialize thumbnail slider first if it exists and has multiple images
+		var thumbSliderInitialized = false;
+		if ($thumbSlider.length > 0 && thumbImageCount > 1) {
 			$thumbSlider.slick({
 				slidesToShow: 4,
 				slidesToScroll: 1,
@@ -68,9 +67,38 @@
 					}
 				]
 			});
+			thumbSliderInitialized = true;
 		} else if ($thumbSlider.length > 0) {
-			// If only one image, don't initialize slider but keep structure
+			// If only one thumbnail, don't initialize slider but keep structure
 			$thumbSlider.hide();
+		}
+
+		// Initialize main slider
+		if ($mainSlider.length > 0) {
+			var mainSliderOptions = {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows: false,
+				dots: true,
+				fade: true,
+				appendDots: $mainSlider,
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							arrows: false,
+							dots: true
+						}
+					}
+				]
+			};
+			
+			// Only add asNavFor if thumbnail slider was initialized
+			if (thumbSliderInitialized) {
+				mainSliderOptions.asNavFor = $thumbSlider;
+			}
+			
+			$mainSlider.slick(mainSliderOptions);
 		}
 
 		// Show gallery after initialization

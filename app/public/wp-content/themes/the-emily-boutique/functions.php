@@ -103,24 +103,23 @@ function the_emily_boutique_scripts() {
 		);
 	}
 	
-	// Enqueue Slick Slider for product pages
+	// Enqueue product gallery slider script on single product pages
 	if ( is_product() ) {
-		// Slick Slider CSS
+		// Enqueue Slick Slider CSS
 		wp_enqueue_style(
-			'slick-slider',
+			'slick-slider-css',
 			'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css',
 			array(),
 			'1.8.1'
 		);
-		
 		wp_enqueue_style(
-			'slick-slider-theme',
+			'slick-slider-theme-css',
 			'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css',
-			array( 'slick-slider' ),
+			array( 'slick-slider-css' ),
 			'1.8.1'
 		);
 		
-		// Slick Slider JS
+		// Enqueue Slick Slider JS
 		wp_enqueue_script(
 			'slick-slider',
 			'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
@@ -129,7 +128,7 @@ function the_emily_boutique_scripts() {
 			true
 		);
 		
-		// Product gallery Slick initialization
+		// Enqueue product gallery script (depends on Slick)
 		wp_enqueue_script(
 			'the-emily-boutique-product-gallery',
 			get_template_directory_uri() . '/js/product-gallery.js',
