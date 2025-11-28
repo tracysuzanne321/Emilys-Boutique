@@ -102,6 +102,42 @@ function the_emily_boutique_scripts() {
 			true
 		);
 	}
+	
+	// Enqueue Slick Slider for product pages
+	if ( is_product() ) {
+		// Slick Slider CSS
+		wp_enqueue_style(
+			'slick-slider',
+			'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css',
+			array(),
+			'1.8.1'
+		);
+		
+		wp_enqueue_style(
+			'slick-slider-theme',
+			'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css',
+			array( 'slick-slider' ),
+			'1.8.1'
+		);
+		
+		// Slick Slider JS
+		wp_enqueue_script(
+			'slick-slider',
+			'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
+			array( 'jquery' ),
+			'1.8.1',
+			true
+		);
+		
+		// Product gallery Slick initialization
+		wp_enqueue_script(
+			'the-emily-boutique-product-gallery',
+			get_template_directory_uri() . '/js/product-gallery.js',
+			array( 'jquery', 'slick-slider' ),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'the_emily_boutique_scripts' );
 
