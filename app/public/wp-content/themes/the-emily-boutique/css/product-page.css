@@ -2,6 +2,12 @@
    Single Product Page
    ============================================ */
 
+/* Hide WooCommerce messages on single product page */
+.single-product .woocommerce-message,
+.single-product .woocommerce-notices-wrapper .woocommerce-message {
+	display: none !important;
+}
+
 /* Delivery & Return Policies Box */
 
 .woocommerce-breadcrumb{
