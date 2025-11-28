@@ -20,7 +20,7 @@
 		// Find major sections (Group and Cover blocks) that don't have snow
 		const sections = document.querySelectorAll('.wp-block-group, .wp-block-cover, .featured-categories, [class*="category"]');
 		let addedCount = 0;
-		const maxAdditions = 10; // Increased limit
+		const maxAdditions = 10; // For major sections
 		
 		sections.forEach(function(section) {
 			// Skip if already has snow container
@@ -28,7 +28,7 @@
 				return;
 			}
 			
-			// Skip if section is too small (less than 150px height) - reduced threshold
+			// Skip if section is too small (less than 150px height)
 			if (section.offsetHeight < 150) {
 				return;
 			}
@@ -55,6 +55,41 @@
 				section.style.position = 'relative'; // Ensure positioning context
 				section.insertBefore(snowContainer, section.firstChild);
 				addedCount++;
+			}
+		});
+		
+		// NOW ADD SNOW TO INDIVIDUAL PRODUCT CARDS
+		// Target WooCommerce block product cards specifically
+		const productCards = document.querySelectorAll(
+			'.wc-block-product, ' +
+			'.wp-block-woocommerce-product-template li, ' +
+			'.wc-block-product-template li, ' +
+			'.featured-products .product, ' +
+			'.wp-block-woocommerce-product-collection li'
+		);
+		
+		let productCount = 0;
+		const maxProductCards = 20; // Limit for product cards
+		
+		productCards.forEach(function(card) {
+			// Skip if already has snow
+			if (card.querySelector('.snow-container')) {
+				return;
+			}
+			
+			// Skip if card is too small
+			// if (card.offsetHeight < 100) {
+			// 	return;
+			// }
+			
+			// Add snow to product cards
+			if (productCount < maxProductCards) {
+				const snowContainer = document.createElement('div');
+				snowContainer.className = 'snow-container';
+				card.style.position = 'relative';
+				card.style.overflow = 'hidden'; // Keep snow inside card
+				card.insertBefore(snowContainer, card.firstChild);
+				productCount++;
 			}
 		});
 	}
@@ -125,6 +160,8 @@
 	} else {
 		initSnowfall();
 	}
+
+	window.addEventListener('load', initSnowfall);
 
 })();
 

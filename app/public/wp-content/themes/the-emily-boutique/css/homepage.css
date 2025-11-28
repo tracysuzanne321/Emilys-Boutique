@@ -378,63 +378,79 @@
 	display: flex !important;
 	flex-direction: column !important;
 	height: 100% !important;
-	padding: 0 0 var(--spacing-md) 0 !important;
+	padding: 0 !important;
 	box-sizing: border-box;
+	position: relative; /* For absolute positioning fallback if needed */
 }
 
-/* Product Link Wrapper - Contains image, title, price */
+/* Product Link Wrapper - Contains image, title, price - MUST NOT GROW */
 .featured-products .wc-block-product > a,
 .featured-products .wc-block-product .wc-block-components-product-image,
 .wp-block-woocommerce-product-collection .wc-block-product > a,
 .wc-block-product-template .wc-block-product > a {
 	display: block;
 	flex-shrink: 0;
+	flex-grow: 0; /* Don't grow */
+}
+
+/* Create a spacer that grows to push button down */
+.featured-products .wc-block-product::after,
+.wp-block-woocommerce-product-collection .wc-block-product::after,
+.wc-block-product-template .wc-block-product::after {
+	content: '';
+	flex-grow: 1; /* This grows to fill space, pushing button down */
+	min-height: var(--spacing-sm); /* Minimum spacing above button */
 }
 
 /* Product Title - Fixed Height for Alignment */
 .featured-products .wc-block-product .wc-block-components-product-title,
 .featured-products .wc-block-product .wp-block-post-title,
 .wp-block-woocommerce-product-collection .wc-block-product .wc-block-components-product-title,
-.wc-block-product-template .wc-block-product .wc-block-components-product-title {
+.wc-block-product-template .wc-block-product .wc-block-components-product-title,
+.wc-block-product-template .wc-block-product .wp-block-post-title {
 	min-height: 3em;
 	display: flex;
 	align-items: flex-start;
 	flex-shrink: 0;
+	flex-grow: 0; /* Don't grow */
 	padding: 0 var(--spacing-md);
 	margin-bottom: var(--spacing-xs);
 }
 
-/* Product Price */
+/* Product Price - Don't grow */
 .featured-products .wc-block-product .wc-block-components-product-price,
 .wp-block-woocommerce-product-collection .wc-block-product .wc-block-components-product-price,
 .wc-block-product-template .wc-block-product .wc-block-components-product-price {
 	color: var(--color-deep-rose) !important;
 	font-weight: 600 !important;
 	font-size: 1rem !important;
-	margin-bottom: var(--spacing-sm) !important;
+	margin-bottom: 0 !important;
 	padding: 0 var(--spacing-md) !important;
 	flex-shrink: 0;
+	flex-grow: 0; /* Don't grow */
 }
 
 /* 
- * ADD TO BASKET BUTTON - Pinned to Bottom
- * Uses margin-top: auto to push to bottom of flex container
- * IMPORTANT: Must handle ALL button states (default, loading, added)
+ * ADD TO BASKET BUTTON WRAPPER - Pinned to Bottom
+ * CRITICAL: This wrapper must NOT use margin-top: auto because it causes the jump
+ * Instead, we use the ::after pseudo-element spacer above
  */
 .featured-products .wc-block-product .wc-block-components-product-button,
 .featured-products .wc-block-product .wp-block-button,
 .wp-block-woocommerce-product-collection .wc-block-product .wc-block-components-product-button,
-.wc-block-product-template .wc-block-product .wc-block-components-product-button {
-	margin-top: auto !important;
+.wc-block-product-template .wc-block-product .wc-block-components-product-button,
+.wc-block-product-template .wc-block-product .wp-block-button {
+	margin-top: 0 !important; /* Changed from auto to 0 */
 	margin-left: var(--spacing-md) !important;
 	margin-right: var(--spacing-md) !important;
-	margin-bottom: 0 !important;
+	margin-bottom: var(--spacing-md) !important; /* Add bottom spacing */
 	flex-shrink: 0 !important;
+	flex-grow: 0 !important; /* Don't grow */
 	/* Prevent the container from changing size during state changes */
 	min-height: 48px !important;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
+	display: block !important; /* Changed from flex to block */
+	width: auto !important;
+	box-sizing: border-box !important;
 }
 
 /* Button Inner Element Styling - ALL STATES */
