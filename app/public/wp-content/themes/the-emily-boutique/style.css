@@ -51,8 +51,20 @@ Tags: e-commerce, woocommerce, boutique, custom-menu, featured-images, threaded-
 /* Blog / Posts */
 @import url('css/blog.css');
 
-/* Pages */
-@import url('css/pages.css');
+/* Pages - Base Styles */
+@import url('css/pages-base.css');
+
+/* Privacy Policy Page */
+@import url('css/pages-privacy-policy.css');
+
+/* Contact Page */
+@import url('css/pages-contact.css');
+
+/* Returns Policy Page */
+@import url('css/pages-returns-policy.css');
+
+/* Terms and Conditions Page */
+@import url('css/pages-terms-conditions.css');
 
 /* 404 Page */
 @import url('css/404.css');

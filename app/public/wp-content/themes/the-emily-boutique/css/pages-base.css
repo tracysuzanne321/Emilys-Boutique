@@ -1,0 +1,13 @@
+/* ============================================
+   Pages - Base Styles
+   ============================================ */
+
+.page-header {
+	margin-bottom: var(--spacing-xl);
+	text-align: center;
+}
+
+.page-content {
+	margin: 0 auto;
+}
+

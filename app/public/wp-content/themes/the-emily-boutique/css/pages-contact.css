@@ -1,0 +1,196 @@
+/* ============================================
+   Contact Page Styling
+   ============================================ */
+
+/* Page-level styling - works when wrapper contains or is near these elements */
+.contact-page-style article,
+.contact-page-style .hentry,
+article:has(.contact-page-style),
+.hentry:has(.contact-page-style) {
+	background-color: var(--color-white) !important;
+	padding: var(--spacing-xl) !important;
+	border-radius: var(--radius-lg) !important;
+	box-shadow: var(--shadow-soft) !important;
+	margin-top: var(--spacing-lg) !important;
+}
+
+.site-main .site-container:has(.contact-page-style) {
+	max-width: 1000px !important;
+}
+
+.contact-page-style .page-header,
+article:has(.contact-page-style) .page-header {
+	text-align: left !important;
+	margin-bottom: var(--spacing-lg) !important;
+	padding-bottom: var(--spacing-md) !important;
+	border-bottom: 2px solid rgba(45, 58, 83, 0.1) !important;
+}
+
+.contact-page-style .page-title,
+article:has(.contact-page-style) .page-title {
+	font-size: clamp(2rem, 4vw, 2.5rem) !important;
+	color: var(--color-navy) !important;
+	margin-bottom: 0 !important;
+}
+
+/* Contact Page Intro Text */
+.contact-page-style .contact-intro {
+	margin-bottom: var(--spacing-xl) !important;
+}
+
+.contact-page-style .contact-intro p {
+	margin-bottom: var(--spacing-md) !important;
+	font-size: 1rem !important;
+	line-height: 1.8 !important;
+	color: var(--color-navy) !important;
+}
+
+.contact-page-style .contact-intro-title {
+	font-size: 1.25rem !important;
+	margin-bottom: var(--spacing-md) !important;
+}
+
+.contact-page-style .contact-intro-title strong {
+	color: var(--color-navy) !important;
+	font-weight: 600 !important;
+}
+
+/* Ninja Forms Styling */
+.contact-page-style .nf-form-cont {
+	margin-top: var(--spacing-lg) !important;
+}
+
+/* Hide Ninja Forms title and required fields text */
+.contact-page-style .nf-form-title,
+.contact-page-style .nf-form-fields-required {
+	display: none !important;
+}
+
+.contact-page-style .nf-form-cont .nf-field-label label {
+	color: var(--color-navy) !important;
+	font-weight: 500 !important;
+	margin-bottom: var(--spacing-xs) !important;
+}
+
+/* Target Ninja Forms inputs with higher specificity */
+.contact-page-style .nf-form-cont .nf-field-element input[type="text"],
+.contact-page-style .nf-form-cont .nf-field-element input[type="email"],
+.contact-page-style .nf-form-cont .nf-field-element input[type="tel"],
+.contact-page-style .nf-form-cont .nf-field-element input[type="url"],
+.contact-page-style .nf-form-cont .nf-field-element input[type="number"],
+.contact-page-style .nf-form-cont .nf-field-element textarea,
+.contact-page-style .nf-form-cont .nf-field-element select,
+.contact-page-style .nf-form-cont input.ninja-forms-field,
+.contact-page-style .nf-form-cont textarea.ninja-forms-field,
+.contact-page-style .nf-form-cont select.ninja-forms-field,
+.contact-page-style input[type="text"],
+.contact-page-style input[type="email"],
+.contact-page-style input[type="tel"],
+.contact-page-style textarea,
+.contact-page-style select {
+	width: 100% !important;
+	padding: 12px !important;
+	border: 2px solid var(--color-navy) !important;
+	border-radius: var(--radius-sm) !important;
+	font-family: var(--font-body) !important;
+	font-size: 1rem !important;
+	color: var(--color-navy) !important;
+	background-color: var(--color-white) !important;
+	transition: border-color 0.3s ease, outline 0.3s ease !important;
+	box-sizing: border-box !important;
+}
+
+.contact-page-style .nf-form-cont .nf-field-element input[type="text"]:focus,
+.contact-page-style .nf-form-cont .nf-field-element input[type="email"]:focus,
+.contact-page-style .nf-form-cont .nf-field-element input[type="tel"]:focus,
+.contact-page-style .nf-form-cont .nf-field-element input[type="url"]:focus,
+.contact-page-style .nf-form-cont .nf-field-element input[type="number"]:focus,
+.contact-page-style .nf-form-cont .nf-field-element textarea:focus,
+.contact-page-style .nf-form-cont .nf-field-element select:focus,
+.contact-page-style .nf-form-cont input.ninja-forms-field:focus,
+.contact-page-style .nf-form-cont textarea.ninja-forms-field:focus,
+.contact-page-style .nf-form-cont select.ninja-forms-field:focus,
+.contact-page-style input[type="text"]:focus,
+.contact-page-style input[type="email"]:focus,
+.contact-page-style input[type="tel"]:focus,
+.contact-page-style textarea:focus,
+.contact-page-style select:focus {
+	outline: 1px solid var(--color-deep-rose) !important;
+	border-color: var(--color-deep-rose) !important;
+}
+
+.contact-page-style .nf-form-cont .nf-field-element textarea,
+.contact-page-style .nf-form-cont textarea.ninja-forms-field,
+.contact-page-style textarea {
+	min-height: 120px !important;
+	resize: vertical !important;
+}
+
+.contact-page-style .nf-form-cont .nf-field-element input[type="button"],
+.contact-page-style .nf-form-cont .nf-field-element input[type="submit"],
+.contact-page-style .nf-form-cont .nf-field-element button,
+.contact-page-style .nf-form-cont input[type="button"].ninja-forms-field,
+.contact-page-style .nf-form-cont input[type="submit"].ninja-forms-field,
+.contact-page-style .nf-form-cont button.ninja-forms-field,
+.contact-page-style input[type="button"],
+.contact-page-style input[type="submit"],
+.contact-page-style button {
+	background-color: var(--color-navy) !important;
+	color: var(--color-white) !important;
+	border: 2px solid var(--color-navy) !important;
+	padding: 12px 24px !important;
+	border-radius: var(--radius-sm) !important;
+	font-family: var(--font-body) !important;
+	font-size: 1rem !important;
+	font-weight: 600 !important;
+	cursor: pointer !important;
+	transition: all 0.3s ease !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.5px !important;
+}
+
+.contact-page-style .nf-form-cont .nf-field-element input[type="button"]:hover,
+.contact-page-style .nf-form-cont .nf-field-element input[type="button"]:focus,
+.contact-page-style .nf-form-cont .nf-field-element input[type="submit"]:hover,
+.contact-page-style .nf-form-cont .nf-field-element input[type="submit"]:focus,
+.contact-page-style .nf-form-cont .nf-field-element button:hover,
+.contact-page-style .nf-form-cont .nf-field-element button:focus,
+.contact-page-style .nf-form-cont input[type="button"].ninja-forms-field:hover,
+.contact-page-style .nf-form-cont input[type="button"].ninja-forms-field:focus,
+.contact-page-style .nf-form-cont input[type="submit"].ninja-forms-field:hover,
+.contact-page-style .nf-form-cont input[type="submit"].ninja-forms-field:focus,
+.contact-page-style .nf-form-cont button.ninja-forms-field:hover,
+.contact-page-style .nf-form-cont button.ninja-forms-field:focus,
+.contact-page-style input[type="button"]:hover,
+.contact-page-style input[type="button"]:focus,
+.contact-page-style input[type="submit"]:hover,
+.contact-page-style input[type="submit"]:focus,
+.contact-page-style button:hover,
+.contact-page-style button:focus {
+	background-color: var(--color-deep-rose) !important;
+	color: var(--color-white) !important;
+	border-color: var(--color-deep-rose) !important;
+}
+
+.contact-page-style .nf-form-cont .nf-error-msg {
+	color: var(--color-deep-rose) !important;
+	font-size: 0.875rem !important;
+	margin-top: var(--spacing-xs) !important;
+}
+
+.contact-page-style .nf-form-cont .nf-field-error input,
+.contact-page-style .nf-form-cont .nf-field-error textarea,
+.contact-page-style .nf-form-cont .nf-field-error select,
+.contact-page-style .nf-form-cont .nf-field-error .ninja-forms-field {
+	border-color: var(--color-deep-rose) !important;
+}
+
+@media (max-width: 767px) {
+	.site-main .site-container:has(.contact-page-style),
+	article:has(.contact-page-style),
+	.hentry:has(.contact-page-style),
+	.contact-page-style {
+		padding: var(--spacing-lg) !important;
+		margin-top: var(--spacing-md) !important;
+	}
+}

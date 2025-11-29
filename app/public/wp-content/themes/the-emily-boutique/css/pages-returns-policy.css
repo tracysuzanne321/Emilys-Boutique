@@ -1,0 +1,130 @@
+/* ============================================
+   Returns Policy Page Styling
+   ============================================ */
+
+/* Page-level styling - works when wrapper contains or is near these elements */
+.returns-policy-page-style article,
+.returns-policy-page-style .hentry,
+article:has(.returns-policy-page-style),
+.hentry:has(.returns-policy-page-style) {
+	background-color: var(--color-white) !important;
+	padding: var(--spacing-xl) !important;
+	border-radius: var(--radius-lg) !important;
+	box-shadow: var(--shadow-soft) !important;
+	margin-top: var(--spacing-lg) !important;
+}
+
+.site-main .site-container:has(.returns-policy-page-style) {
+	max-width: 1000px !important;
+}
+
+.returns-policy-page-style .page-header,
+article:has(.returns-policy-page-style) .page-header {
+	text-align: left !important;
+	margin-bottom: var(--spacing-lg) !important;
+	padding-bottom: var(--spacing-md) !important;
+	border-bottom: 2px solid rgba(45, 58, 83, 0.1) !important;
+}
+
+.returns-policy-page-style .page-title,
+article:has(.returns-policy-page-style) .page-title {
+	font-size: clamp(2rem, 4vw, 2.5rem) !important;
+	color: var(--color-navy) !important;
+	margin-bottom: 0 !important;
+}
+
+.returns-policy-page-style .page-content,
+article:has(.returns-policy-page-style) .page-content {
+	max-width: 800px !important;
+	margin: 0 auto !important;
+	line-height: 1.8 !important;
+	color: var(--color-navy) !important;
+}
+
+.returns-policy-page-style .page-content h2,
+article:has(.returns-policy-page-style) .page-content h2 {
+	font-size: 1.75rem !important;
+	margin-top: var(--spacing-xl) !important;
+	margin-bottom: var(--spacing-md) !important;
+	color: var(--color-navy) !important;
+	padding-top: var(--spacing-md) !important;
+	border-top: 1px solid rgba(45, 58, 83, 0.1) !important;
+}
+
+.returns-policy-page-style .page-content h3,
+article:has(.returns-policy-page-style) .page-content h3 {
+	font-size: 1.5rem !important;
+	margin-top: var(--spacing-lg) !important;
+	margin-bottom: var(--spacing-sm) !important;
+	color: var(--color-navy) !important;
+}
+
+.returns-policy-page-style .page-content p,
+article:has(.returns-policy-page-style) .page-content p {
+	margin-bottom: var(--spacing-md) !important;
+	font-size: 1rem !important;
+	line-height: 1.8 !important;
+}
+
+.returns-policy-page-style .page-content ul,
+.returns-policy-page-style .page-content ol,
+article:has(.returns-policy-page-style) .page-content ul,
+article:has(.returns-policy-page-style) .page-content ol {
+	margin-bottom: var(--spacing-md) !important;
+	padding-left: var(--spacing-lg) !important;
+}
+
+.returns-policy-page-style .page-content li,
+article:has(.returns-policy-page-style) .page-content li {
+	margin-bottom: var(--spacing-xs) !important;
+	line-height: 1.8 !important;
+}
+
+.returns-policy-page-style .page-content a,
+article:has(.returns-policy-page-style) .page-content a {
+	color: var(--color-deep-rose) !important;
+	text-decoration: underline !important;
+}
+
+.returns-policy-page-style .page-content a:hover,
+.returns-policy-page-style .page-content a:focus,
+article:has(.returns-policy-page-style) .page-content a:hover,
+article:has(.returns-policy-page-style) .page-content a:focus {
+	color: var(--color-navy) !important;
+}
+
+.returns-policy-page-style .page-content p strong,
+.returns-policy-page-style .page-content li strong,
+.returns-policy-page-style .page-content div strong,
+article:has(.returns-policy-page-style) .page-content p strong,
+article:has(.returns-policy-page-style) .page-content li strong,
+article:has(.returns-policy-page-style) .page-content div strong {
+	color: var(--color-deep-rose) !important;
+	font-weight: 600;
+}
+
+@media (max-width: 767px) {
+	.site-main .site-container:has(.returns-policy-page-style),
+	article:has(.returns-policy-page-style),
+	.hentry:has(.returns-policy-page-style),
+	.returns-policy-page-style {
+		padding: var(--spacing-lg) !important;
+		margin-top: var(--spacing-md) !important;
+	}
+	
+	.returns-policy-page-style .page-content,
+	article:has(.returns-policy-page-style) .page-content {
+		font-size: 0.95rem !important;
+	}
+	
+	.returns-policy-page-style .page-content h2,
+	article:has(.returns-policy-page-style) .page-content h2 {
+		font-size: 1.5rem !important;
+		margin-top: var(--spacing-lg) !important;
+	}
+	
+	.returns-policy-page-style .page-content h3,
+	article:has(.returns-policy-page-style) .page-content h3 {
+		font-size: 1.25rem !important;
+	}
+}

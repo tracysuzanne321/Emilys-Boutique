@@ -1,0 +1,130 @@
+/* ============================================
+   Terms and Conditions Page Styling
+   ============================================ */
+
+/* Page-level styling - works when wrapper contains or is near these elements */
+.terms-conditions-page-style article,
+.terms-conditions-page-style .hentry,
+article:has(.terms-conditions-page-style),
+.hentry:has(.terms-conditions-page-style) {
+	background-color: var(--color-white) !important;
+	padding: var(--spacing-xl) !important;
+	border-radius: var(--radius-lg) !important;
+	box-shadow: var(--shadow-soft) !important;
+	margin-top: var(--spacing-lg) !important;
+}
+
+.site-main .site-container:has(.terms-conditions-page-style) {
+	max-width: 1000px !important;
+}
+
+.terms-conditions-page-style .page-header,
+article:has(.terms-conditions-page-style) .page-header {
+	text-align: left !important;
+	margin-bottom: var(--spacing-lg) !important;
+	padding-bottom: var(--spacing-md) !important;
+	border-bottom: 2px solid rgba(45, 58, 83, 0.1) !important;
+}
+
+.terms-conditions-page-style .page-title,
+article:has(.terms-conditions-page-style) .page-title {
+	font-size: clamp(2rem, 4vw, 2.5rem) !important;
+	color: var(--color-navy) !important;
+	margin-bottom: 0 !important;
+}
+
+.terms-conditions-page-style .page-content,
+article:has(.terms-conditions-page-style) .page-content {
+	max-width: 800px !important;
+	margin: 0 auto !important;
+	line-height: 1.8 !important;
+	color: var(--color-navy) !important;
+}
+
+.terms-conditions-page-style .page-content h2,
+article:has(.terms-conditions-page-style) .page-content h2 {
+	font-size: 1.75rem !important;
+	margin-top: var(--spacing-xl) !important;
+	margin-bottom: var(--spacing-md) !important;
+	color: var(--color-navy) !important;
+	padding-top: var(--spacing-md) !important;
+	border-top: 1px solid rgba(45, 58, 83, 0.1) !important;
+}
+
+.terms-conditions-page-style .page-content h3,
+article:has(.terms-conditions-page-style) .page-content h3 {
+	font-size: 1.5rem !important;
+	margin-top: var(--spacing-lg) !important;
+	margin-bottom: var(--spacing-sm) !important;
+	color: var(--color-navy) !important;
+}
+
+.terms-conditions-page-style .page-content p,
+article:has(.terms-conditions-page-style) .page-content p {
+	margin-bottom: var(--spacing-md) !important;
+	font-size: 1rem !important;
+	line-height: 1.8 !important;
+}
+
+.terms-conditions-page-style .page-content ul,
+.terms-conditions-page-style .page-content ol,
+article:has(.terms-conditions-page-style) .page-content ul,
+article:has(.terms-conditions-page-style) .page-content ol {
+	margin-bottom: var(--spacing-md) !important;
+	padding-left: var(--spacing-lg) !important;
+}
+
+.terms-conditions-page-style .page-content li,
+article:has(.terms-conditions-page-style) .page-content li {
+	margin-bottom: var(--spacing-xs) !important;
+	line-height: 1.8 !important;
+}
+
+.terms-conditions-page-style .page-content a,
+article:has(.terms-conditions-page-style) .page-content a {
+	color: var(--color-deep-rose) !important;
+	text-decoration: underline !important;
+}
+
+.terms-conditions-page-style .page-content a:hover,
+.terms-conditions-page-style .page-content a:focus,
+article:has(.terms-conditions-page-style) .page-content a:hover,
+article:has(.terms-conditions-page-style) .page-content a:focus {
+	color: var(--color-navy) !important;
+}
+
+.terms-conditions-page-style .page-content p strong,
+.terms-conditions-page-style .page-content li strong,
+.terms-conditions-page-style .page-content div strong,
+article:has(.terms-conditions-page-style) .page-content p strong,
+article:has(.terms-conditions-page-style) .page-content li strong,
+article:has(.terms-conditions-page-style) .page-content div strong {
+	color: var(--color-deep-rose) !important;
+	font-weight: 600;
+}
+
+@media (max-width: 767px) {
+	.site-main .site-container:has(.terms-conditions-page-style),
+	article:has(.terms-conditions-page-style),
+	.hentry:has(.terms-conditions-page-style),
+	.terms-conditions-page-style {
+		padding: var(--spacing-lg) !important;
+		margin-top: var(--spacing-md) !important;
+	}
+	
+	.terms-conditions-page-style .page-content,
+	article:has(.terms-conditions-page-style) .page-content {
+		font-size: 0.95rem !important;
+	}
+	
+	.terms-conditions-page-style .page-content h2,
+	article:has(.terms-conditions-page-style) .page-content h2 {
+		font-size: 1.5rem !important;
+		margin-top: var(--spacing-lg) !important;
+	}
+	
+	.terms-conditions-page-style .page-content h3,
+	article:has(.terms-conditions-page-style) .page-content h3 {
+		font-size: 1.25rem !important;
+	}
+}

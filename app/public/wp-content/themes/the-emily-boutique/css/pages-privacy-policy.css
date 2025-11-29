@@ -1,0 +1,151 @@
+/* ============================================
+   Privacy Policy Page Styling
+   ============================================ */
+
+body.page-slug-privacy-policy .hentry,
+body.page.post-3 .hentry,
+body.page[class*="privacy"] .hentry {
+	background-color: var(--color-white) !important;
+	padding: var(--spacing-xl) !important;
+	border-radius: var(--radius-lg) !important;
+	box-shadow: var(--shadow-soft) !important;
+	margin-top: var(--spacing-lg) !important;
+}
+
+body.page-slug-privacy-policy .site-main .site-container,
+body.page.post-3 .site-main .site-container,
+body.page[class*="privacy"] .site-main .site-container {
+	max-width: 1000px !important;
+}
+
+body.page-slug-privacy-policy .page-header,
+body.page.post-3 .page-header,
+body.page[class*="privacy"] .page-header {
+	text-align: left !important;
+	margin-bottom: var(--spacing-lg) !important;
+	padding-bottom: var(--spacing-md) !important;
+	border-bottom: 2px solid rgba(45, 58, 83, 0.1) !important;
+}
+
+body.page-slug-privacy-policy .page-title,
+body.page.post-3 .page-title,
+body.page[class*="privacy"] .page-title {
+	font-size: clamp(2rem, 4vw, 2.5rem) !important;
+	color: var(--color-navy) !important;
+	margin-bottom: 0 !important;
+}
+
+body.page-slug-privacy-policy .page-content,
+body.page.post-3 .page-content,
+body.page[class*="privacy"] .page-content {
+	max-width: 800px !important;
+	margin: 0 auto !important;
+	line-height: 1.8 !important;
+	color: var(--color-navy) !important;
+}
+
+body.page-slug-privacy-policy .page-content h2,
+body.page.post-3 .page-content h2,
+body.page[class*="privacy"] .page-content h2 {
+	font-size: 1.75rem !important;
+	margin-top: var(--spacing-sm) !important;
+	margin-bottom: var(--spacing-md) !important;
+	color: var(--color-navy) !important;
+	padding-top: var(--spacing-md) !important;
+	border-top: 1px solid rgba(45, 58, 83, 0.1) !important;
+}
+
+body.page-slug-privacy-policy .page-content h3,
+body.page.post-3 .page-content h3,
+body.page[class*="privacy"] .page-content h3 {
+	font-size: 1.5rem !important;
+	margin-top: var(--spacing-lg) !important;
+	margin-bottom: var(--spacing-sm) !important;
+	color: var(--color-navy) !important;
+}
+
+body.page-slug-privacy-policy .page-content p,
+body.page.post-3 .page-content p,
+body.page[class*="privacy"] .page-content p {
+	margin-bottom: var(--spacing-md) !important;
+	font-size: 1rem !important;
+	line-height: 1.8 !important;
+}
+
+body.page-slug-privacy-policy .page-content ul,
+body.page-slug-privacy-policy .page-content ol,
+body.page.post-3 .page-content ul,
+body.page.post-3 .page-content ol,
+body.page[class*="privacy"] .page-content ul,
+body.page[class*="privacy"] .page-content ol {
+	margin-bottom: var(--spacing-md) !important;
+	padding-left: var(--spacing-lg) !important;
+}
+
+body.page-slug-privacy-policy .page-content li,
+body.page.post-3 .page-content li,
+body.page[class*="privacy"] .page-content li {
+	margin-bottom: var(--spacing-xs) !important;
+	line-height: 1.8 !important;
+}
+
+body.page-slug-privacy-policy .page-content a,
+body.page.post-3 .page-content a,
+body.page[class*="privacy"] .page-content a {
+	color: var(--color-deep-rose) !important;
+	text-decoration: underline !important;
+}
+
+body.page-slug-privacy-policy .page-content a:hover,
+body.page-slug-privacy-policy .page-content a:focus,
+body.page.post-3 .page-content a:hover,
+body.page.post-3 .page-content a:focus,
+body.page[class*="privacy"] .page-content a:hover,
+body.page[class*="privacy"] .page-content a:focus {
+	color: var(--color-navy) !important;
+}
+
+body.page-slug-privacy-policy .page-content p strong,
+body.page-slug-privacy-policy .page-content li strong,
+body.page-slug-privacy-policy .page-content div strong,
+body.page.post-3 .page-content p strong,
+body.page.post-3 .page-content li strong,
+body.page.post-3 .page-content div strong,
+body.page[class*="privacy"] .page-content p strong,
+body.page[class*="privacy"] .page-content li strong,
+body.page[class*="privacy"] .page-content div strong {
+	color: var(--color-deep-rose) !important;
+	font-weight: 600;
+}
+
+@media (max-width: 767px) {
+	body.page-slug-privacy-policy .site-main .site-container,
+	body.page-slug-privacy-policy .hentry,
+	body.page.post-3 .site-main .site-container,
+	body.page.post-3 .hentry,
+	body.page[class*="privacy"] .site-main .site-container,
+	body.page[class*="privacy"] .hentry {
+		padding: var(--spacing-lg) !important;
+		margin-top: var(--spacing-md) !important;
+	}
+	
+	body.page-slug-privacy-policy .page-content,
+	body.page.post-3 .page-content,
+	body.page[class*="privacy"] .page-content {
+		font-size: 0.95rem !important;
+	}
+	
+	body.page-slug-privacy-policy .page-content h2,
+	body.page.post-3 .page-content h2,
+	body.page[class*="privacy"] .page-content h2 {
+		font-size: 1.5rem !important;
+		margin-top: var(--spacing-lg) !important;
+	}
+	
+	body.page-slug-privacy-policy .page-content h3,
+	body.page.post-3 .page-content h3,
+	body.page[class*="privacy"] .page-content h3 {
+		font-size: 1.25rem !important;
+	}
+}
+
