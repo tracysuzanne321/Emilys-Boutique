@@ -44,9 +44,11 @@ function the_emily_boutique_setup() {
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
 	
-	// Register navigation menu
+	// Register navigation menus
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary Menu', 'the-emily-boutique' ),
+		'footer-menu-one' => esc_html__( 'Footer Menu One', 'the-emily-boutique' ),
+		'footer-menu-two' => esc_html__( 'Footer Menu Two', 'the-emily-boutique' ),
 	) );
 	
 	// Set content width
@@ -71,7 +73,7 @@ function the_emily_boutique_scripts() {
 		'the-emily-boutique-style',
 		get_stylesheet_uri(),
 		array(),
-		wp_get_theme()->get( 'Version' )
+		filemtime( get_template_directory() . '/style.css' )
 	);
 	
 	// Enqueue main JavaScript
@@ -79,26 +81,28 @@ function the_emily_boutique_scripts() {
 		'the-emily-boutique-main',
 		get_template_directory_uri() . '/main.js',
 		array(),
-		wp_get_theme()->get( 'Version' ),
+		file_exists( get_template_directory() . '/main.js' ) ? filemtime( get_template_directory() . '/main.js' ) : wp_get_theme()->get( 'Version' ),
 		true
 	);
 	
 	// Enqueue snow animation only on front page
 	if ( is_front_page() ) {
 		// Enqueue snow CSS
+		$snow_css_path = get_template_directory() . '/css/snow.css';
 		wp_enqueue_style(
 			'the-emily-boutique-snow',
 			get_template_directory_uri() . '/css/snow.css',
 			array(),
-			wp_get_theme()->get( 'Version' )
+			file_exists( $snow_css_path ) ? filemtime( $snow_css_path ) : wp_get_theme()->get( 'Version' )
 		);
 		
 		// Enqueue snow JavaScript
+		$snow_js_path = get_template_directory() . '/snow.js';
 		wp_enqueue_script(
 			'the-emily-boutique-snow',
 			get_template_directory_uri() . '/snow.js',
 			array(),
-			wp_get_theme()->get( 'Version' ),
+			file_exists( $snow_js_path ) ? filemtime( $snow_js_path ) : wp_get_theme()->get( 'Version' ),
 			true
 		);
 	}
@@ -129,11 +133,12 @@ function the_emily_boutique_scripts() {
 		);
 		
 		// Enqueue product gallery script (depends on Slick)
+		$product_gallery_js_path = get_template_directory() . '/js/product-gallery.js';
 		wp_enqueue_script(
 			'the-emily-boutique-product-gallery',
 			get_template_directory_uri() . '/js/product-gallery.js',
 			array( 'jquery', 'slick-slider' ),
-			wp_get_theme()->get( 'Version' ),
+			file_exists( $product_gallery_js_path ) ? filemtime( $product_gallery_js_path ) : wp_get_theme()->get( 'Version' ),
 			true
 		);
 	}

@@ -18,96 +18,67 @@
 
 				<div class="footer-column footer-shop">
 					<h4 class="footer-title"><?php esc_html_e( 'Shop', 'the-emily-boutique' ); ?></h4>
-					<ul class="footer-menu">
-						<?php
-						$shop_url = '';
-						if ( class_exists( 'WooCommerce' ) ) {
-							$shop_url = wc_get_page_permalink( 'shop' );
-						} else {
-							$shop_url = home_url( '/shop/' );
-						}
+					<?php
+					if ( has_nav_menu( 'footer-menu-one' ) ) {
+						wp_nav_menu( array(
+							'theme_location' => 'footer-menu-one',
+							'menu_class'     => 'footer-menu',
+							'container'      => false,
+							'depth'          => 1,
+							'fallback_cb'    => false,
+						) );
+					} else {
+						// Fallback to default menu if no menu is assigned
 						?>
-						<li><a href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'All Products', 'the-emily-boutique' ); ?></a></li>
+						<ul class="footer-menu">
+							<?php
+							$shop_url = '';
+							if ( class_exists( 'WooCommerce' ) ) {
+								$shop_url = wc_get_page_permalink( 'shop' );
+							} else {
+								$shop_url = home_url( '/shop/' );
+							}
+							?>
+							<li><a href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'All Products', 'the-emily-boutique' ); ?></a></li>
+							<?php
+							if ( class_exists( 'WooCommerce' ) ) {
+								$beads_term = get_term_by( 'slug', 'beads', 'product_cat' );
+								$prints_term = get_term_by( 'slug', 'prints', 'product_cat' );
+								
+								if ( $beads_term ) {
+									$beads_url = get_term_link( $beads_term->term_id, 'product_cat' );
+									?>
+									<li><a href="<?php echo esc_url( $beads_url ); ?>"><?php esc_html_e( 'Beads', 'the-emily-boutique' ); ?></a></li>
+									<?php
+								}
+								
+								if ( $prints_term ) {
+									$prints_url = get_term_link( $prints_term->term_id, 'product_cat' );
+									?>
+									<li><a href="<?php echo esc_url( $prints_url ); ?>"><?php esc_html_e( 'Prints', 'the-emily-boutique' ); ?></a></li>
+									<?php
+								}
+							}
+							?>
+						</ul>
 						<?php
-						if ( class_exists( 'WooCommerce' ) ) {
-							$beads_term = get_term_by( 'slug', 'beads', 'product_cat' );
-							$prints_term = get_term_by( 'slug', 'prints', 'product_cat' );
-							
-							if ( $beads_term ) {
-								$beads_url = get_term_link( $beads_term->term_id, 'product_cat' );
-								?>
-								<li><a href="<?php echo esc_url( $beads_url ); ?>"><?php esc_html_e( 'Beads', 'the-emily-boutique' ); ?></a></li>
-								<?php
-							}
-							
-							if ( $prints_term ) {
-								$prints_url = get_term_link( $prints_term->term_id, 'product_cat' );
-								?>
-								<li><a href="<?php echo esc_url( $prints_url ); ?>"><?php esc_html_e( 'Prints', 'the-emily-boutique' ); ?></a></li>
-								<?php
-							}
-						}
-						?>
-					</ul>
+					}
+					?>
 				</div>
 
 				<div class="footer-column footer-info">
 					<h4 class="footer-title"><?php esc_html_e( 'Information', 'the-emily-boutique' ); ?></h4>
-					<ul class="footer-menu">
-						<?php
-						$about_page = get_page_by_path( 'about' );
-						if ( $about_page ) {
-							?>
-							<li><a href="<?php echo esc_url( get_permalink( $about_page->ID ) ); ?>"><?php esc_html_e( 'About', 'the-emily-boutique' ); ?></a></li>
-							<?php
-						}
-						
-						$contact_page = get_page_by_path( 'contact' );
-						if ( $contact_page ) {
-							?>
-							<li><a href="<?php echo esc_url( get_permalink( $contact_page->ID ) ); ?>"><?php esc_html_e( 'Contact', 'the-emily-boutique' ); ?></a></li>
-							<?php
-						}
-						
-						// Check for privacy policy page (regular WordPress page or WooCommerce page)
-						$privacy_page = get_page_by_path( 'privacy-policy' );
-						if ( ! $privacy_page && class_exists( 'WooCommerce' ) ) {
-							$privacy_url = wc_get_page_permalink( 'privacy' );
-							if ( $privacy_url ) {
-								?>
-								<li><a href="<?php echo esc_url( $privacy_url ); ?>"><?php esc_html_e( 'Privacy Policy', 'the-emily-boutique' ); ?></a></li>
-								<?php
-							}
-						} elseif ( $privacy_page ) {
-							?>
-							<li><a href="<?php echo esc_url( get_permalink( $privacy_page->ID ) ); ?>"><?php esc_html_e( 'Privacy Policy', 'the-emily-boutique' ); ?></a></li>
-							<?php
-						}
-						
-						// Check for returns policy page
-						$returns_page = get_page_by_path( 'returns-policy' );
-						if ( $returns_page ) {
-							?>
-							<li><a href="<?php echo esc_url( get_permalink( $returns_page->ID ) ); ?>"><?php esc_html_e( 'Returns Policy', 'the-emily-boutique' ); ?></a></li>
-							<?php
-						}
-						
-						// Check for terms and conditions page (regular WordPress page or WooCommerce page)
-						$terms_page = get_page_by_path( 'terms-conditions' );
-						if ( ! $terms_page && class_exists( 'WooCommerce' ) ) {
-							$terms_url = wc_get_page_permalink( 'terms' );
-							if ( $terms_url ) {
-								?>
-								<li><a href="<?php echo esc_url( $terms_url ); ?>"><?php esc_html_e( 'Terms & Conditions', 'the-emily-boutique' ); ?></a></li>
-								<?php
-							}
-						} elseif ( $terms_page ) {
-							?>
-							<li><a href="<?php echo esc_url( get_permalink( $terms_page->ID ) ); ?>"><?php esc_html_e( 'Terms & Conditions', 'the-emily-boutique' ); ?></a></li>
-							<?php
-						}
-						?>
-					</ul>
+					<?php
+					if ( has_nav_menu( 'footer-menu-two' ) ) {
+						wp_nav_menu( array(
+							'theme_location' => 'footer-menu-two',
+							'menu_class'     => 'footer-menu',
+							'container'      => false,
+							'depth'          => 1,
+							'fallback_cb'    => false,
+						) );
+					}
+					?>
 				</div>
 
 				<div class="footer-column footer-connect">
