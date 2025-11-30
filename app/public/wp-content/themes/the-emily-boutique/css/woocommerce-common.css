@@ -201,7 +201,6 @@ body.tax-product_tag .site-main .woocommerce {
 .woocommerce-tabs ul.tabs li.active a,
 .woocommerce-tabs ul.tabs li a:hover {
 	color: var(--color-deep-rose);
-	border-bottom-color: var(--color-gold);
 }
 
 .woocommerce-tabs .panel {

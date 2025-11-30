@@ -436,7 +436,7 @@
 }
 
 .single-product .summary .woocommerce-product-details__short-description p {
-	margin-bottom: var(--spacing-sm);
+	margin: var(--spacing-sm) 0;
 }
 
 .single-product .summary .woocommerce-product-details__short-description ul {

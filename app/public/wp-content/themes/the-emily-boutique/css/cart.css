@@ -423,7 +423,7 @@
 	}
 	
 	.woocommerce-cart-form .product-thumbnail img {
-		max-width: 150px;
+		max-width: 200px;
 		margin: 0 auto;
 	}
 	
@@ -499,7 +499,19 @@
 		padding: 12px 20px;
 		font-size: 0.9rem;
 	}
+	.wc-block-cart-items__row{
+		display: flex !important;
+		flex-direction: column !important;
+		padding: 16px 16px !important;
+	}
+
+	.wc-block-components-sidebar-layout .wc-block-components-main, .wc-block-components-sidebar-layout .wc-block-components-sidebar{
+		padding: 16px 16px !important;
+	}
+	
 }
+
+
 
 /* ============================================
    WooCommerce Blocks Cart
@@ -1000,8 +1012,8 @@
 	
 	.wc-block-cart-item__image,
 	.wp-block-woocommerce-cart-line-items-block .wc-block-cart-item__image {
-		width: 80px;
-		height: 80px;
+		width: 120px;
+		height: 120px;
 		flex-shrink: 0;
 		margin: 0;
 	}
