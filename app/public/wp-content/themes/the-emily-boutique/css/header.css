@@ -6,10 +6,19 @@
 	background-color: var(--color-navy);
 	border-bottom: 1px solid rgba(217, 176, 102, 0.2);
 	padding: var(--spacing-md) 0;
-	position: relative; /* Changed from sticky */
-	/* top: 0; Removed */
+	position: relative;
+	width: 100%;
 	z-index: 1000;
 	box-shadow: var(--shadow-soft);
+}
+
+@media (min-width: 768px) {
+	.site-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
 }
 
 .header-inner {
@@ -65,16 +74,21 @@
 /* Primary Navigation */
 .primary-navigation {
 	background-color: var(--color-cream);
-	position: relative; /* Changed from sticky */
-	/* top: 110px; Removed */
-	z-index: 999;
+	position: relative;
 	width: 100%;
+	z-index: 998;
 	box-shadow: 0 2px 8px rgba(45, 58, 83, 0.1);
+	padding: var(--spacing-sm) 0;
+	display: block;
+	visibility: visible;
 }
 
 @media (min-width: 768px) {
 	.primary-navigation {
-		/* top: 148px; Removed */
+		position: fixed;
+		top: 148px; /* Adjust based on header height on larger screens */
+		left: 0;
+		right: 0;
 	}
 }
 

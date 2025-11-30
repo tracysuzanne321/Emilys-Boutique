@@ -100,6 +100,13 @@ body {
 	background-position: center center;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	padding-top: 0; /* No padding on mobile since header is not fixed */
+}
+
+@media (min-width: 768px) {
+	body {
+		padding-top: 160px; /* Space for fixed header and navigation on larger screens */
+	}
 }
 
 .screen-reader-text {

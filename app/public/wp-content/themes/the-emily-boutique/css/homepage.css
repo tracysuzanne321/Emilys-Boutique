@@ -12,6 +12,11 @@
 	box-sizing: border-box;
 }
 
+/* Add margin-top to hero section with specific classes */
+.wp-block-group.hero-section.fade-in.has-background {
+	margin-top: var(--spacing-xl);
+}
+
 
 
 .hero-inner {

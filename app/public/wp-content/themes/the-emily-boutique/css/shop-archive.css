@@ -2,18 +2,21 @@
    Shop Archive Page
    ============================================ */
 
-/* Remove top padding from .site-main when shop banner is present */
-.site-main:has(.shop-banner) {
-	padding-top: 0 !important;
+/* Remove top padding from .site-main when shop banner is present on desktop */
+@media (min-width: 768px) {
+	.site-main:has(.shop-banner) {
+		padding-top: 0 !important;
+	}
 }
 
 /* Shop Banner */
 .shop-banner {
 	background: var(--color-navy);
-	padding: var(--spacing-xl) var(--container-padding);
+	padding: var(--spacing-lg) var(--container-padding);
 	text-align: left;
 	position: relative;
 	overflow: hidden;
+	margin-top: 203px;
 }
 
 .shop-banner::before {
@@ -94,10 +97,15 @@
 	.shop-banner {
 		padding: var(--spacing-lg) var(--container-padding);
 		margin-bottom: var(--spacing-lg);
+		margin-top: 0;
 	}
 	
 	.shop-banner-title {
 		font-size: clamp(2rem, 6vw, 3rem);
+	}
+	
+	.site-main:has(.shop-banner) {
+		padding-top: 0 !important;
 	}
 }
 
