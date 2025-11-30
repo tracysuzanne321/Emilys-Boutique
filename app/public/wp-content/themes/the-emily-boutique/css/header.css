@@ -147,6 +147,12 @@
 	border-radius: var(--radius-sm);
 }
 
+.primary-navigation a:hover,
+.primary-navigation a:focus {
+	color: var(--color-deep-rose);
+	background-color: rgba(217, 136, 156, 0.1);
+}
+
 .primary-navigation a::before {
 	content: '';
 	display: inline-block;
