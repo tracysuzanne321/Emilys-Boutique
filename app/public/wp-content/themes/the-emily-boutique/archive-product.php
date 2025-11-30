@@ -10,6 +10,39 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 
+<?php if ( is_shop() || is_product_category() || is_product_tag() ) : ?>
+	<div class="shop-banner">
+		<div class="shop-banner-content">
+			<nav class="shop-banner-breadcrumb" aria-label="Breadcrumb">
+				<?php woocommerce_breadcrumb(); ?>
+			</nav>
+			<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+				<h1 class="shop-banner-title">
+					<?php woocommerce_page_title(); ?>
+				</h1>
+			<?php endif; ?>
+			<?php if ( is_shop() ) : ?>
+				<p class="shop-banner-subheading">
+					<?php echo apply_filters( 'the_emily_boutique_shop_banner_subheading', 'Discover our beautiful collection of handcrafted pieces' ); ?>
+				</p>
+			<?php elseif ( is_product_category() ) : ?>
+				<?php
+				$category = get_queried_object();
+				$category_description = term_description( $category->term_id, 'product_cat' );
+				if ( ! empty( $category_description ) ) : ?>
+					<div class="shop-banner-subheading">
+						<?php echo wp_kses_post( $category_description ); ?>
+					</div>
+				<?php else : ?>
+					<p class="shop-banner-subheading">
+						<?php echo apply_filters( 'the_emily_boutique_category_banner_subheading', 'Browse our curated selection' ); ?>
+					</p>
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</div>
+<?php endif; ?>
+
 <div class="woocommerce">
 	<?php
 	/**
