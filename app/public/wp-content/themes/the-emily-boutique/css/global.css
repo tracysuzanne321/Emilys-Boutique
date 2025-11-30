@@ -103,9 +103,28 @@ body {
 	padding-top: 0; /* No padding on mobile since header is not fixed */
 }
 
+/* Add spacing for product, cart, and checkout pages on mobile */
+body.single-product {
+	padding-top: var(--spacing-md);
+}
+
+body.woocommerce-cart,
+body.woocommerce-checkout {
+	padding-top: var(--spacing-lg);
+}
+
 @media (min-width: 768px) {
 	body {
 		padding-top: 160px; /* Space for fixed header and navigation on larger screens */
+	}
+	
+	body.single-product {
+		padding-top: 160px; /* Same as regular body on desktop */
+	}
+	
+	body.woocommerce-cart,
+	body.woocommerce-checkout {
+		padding-top: 180px; /* Extra space for cart and checkout on desktop */
 	}
 }
 
@@ -217,6 +236,13 @@ img {
 .site-main {
 	min-height: 60vh;
 	padding: var(--spacing-xl) 0;
+}
+
+/* Ensure product, cart, and checkout pages have proper spacing */
+body.single-product .site-main,
+body.woocommerce-cart .site-main,
+body.woocommerce-checkout .site-main {
+	padding-top: var(--spacing-xl);
 }
 
 /* Remove top padding for Gutenberg block pages, but exclude WooCommerce cart and checkout */
