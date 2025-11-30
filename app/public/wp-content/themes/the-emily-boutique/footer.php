@@ -87,9 +87,9 @@
 					<ul class="footer-social-links">
 						<?php
 						// Update these URLs with your actual social media links
-						$facebook_url = 'https://facebook.com/yourpage'; // Update this
-						$instagram_url = 'https://instagram.com/yourpage'; // Update this
-						$tiktok_url = 'https://tiktok.com/@yourpage'; // Update this
+						$facebook_url = 'https://www.facebook.com/printzbyemzx'; // Update this
+						$instagram_url = 'https://www.instagram.com/beadzbyemzxo/'; // Update this
+						$tiktok_url = 'https://www.tiktok.com/@theemilyboutique'; // Update this
 						?>
 						<li>
 							<a href="<?php echo esc_url( $facebook_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e( 'Facebook', 'the-emily-boutique' ); ?>">
