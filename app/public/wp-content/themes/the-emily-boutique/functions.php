@@ -638,3 +638,4 @@ function the_emily_boutique_add_contact_intro( $content ) {
 }
 add_filter( 'the_content', 'the_emily_boutique_add_contact_intro', 5 );
 
+

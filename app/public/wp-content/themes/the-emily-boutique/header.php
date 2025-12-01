@@ -61,4 +61,13 @@
 	</nav>
 
 	<main id="main" class="site-main">
+	<?php if ( is_cart() ) : ?>
+		<div class="cart-banner">
+			<div class="cart-banner-content">
+				<h1 class="cart-banner-title">
+					<?php esc_html_e( 'Basket', 'the-emily-boutique' ); ?>
+				</h1>
+			</div>
+		</div>
+	<?php endif; ?>
 

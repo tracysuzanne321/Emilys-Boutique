@@ -3,6 +3,132 @@
    ============================================ */
 
 /* ============================================
+   Cart Banner
+   ============================================ */
+
+/* Remove top padding from .site-main when cart banner is present on desktop */
+@media (min-width: 768px) {
+	.site-main:has(.cart-banner) {
+		padding-top: 0 !important;
+	}
+}
+
+/* Cart Banner */
+.cart-banner {
+	background: var(--color-navy);
+	padding: var(--spacing-xl) var(--container-padding);
+	text-align: left;
+	position: relative;
+	overflow: hidden;
+	/* margin-top: 203px; */
+}
+
+.cart-banner::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+	opacity: 0.3;
+}
+
+.cart-banner-content {
+	position: relative;
+	z-index: 1;
+	max-width: 1200px;
+	margin: 0 auto;
+	text-align: left;
+	padding: 0 var(--container-padding);
+}
+
+.cart-banner-breadcrumb {
+	margin-bottom: var(--spacing-md);
+	text-align: left;
+}
+
+.cart-banner-breadcrumb .woocommerce-breadcrumb {
+	color: var(--color-white) !important;
+	font-size: 0.875rem;
+	font-family: var(--font-body);
+	opacity: 0.9;
+}
+
+.cart-banner-breadcrumb .woocommerce-breadcrumb,
+.cart-banner-breadcrumb .woocommerce-breadcrumb * {
+	color: var(--color-white) !important;
+}
+
+.cart-banner-breadcrumb .woocommerce-breadcrumb a {
+	color: var(--color-white) !important;
+	text-decoration: none;
+	transition: opacity 0.3s ease;
+}
+
+.cart-banner-breadcrumb .woocommerce-breadcrumb a:hover {
+	opacity: 0.8;
+	text-decoration: underline;
+}
+
+.cart-banner-breadcrumb .woocommerce-breadcrumb .delimiter {
+	color: var(--color-white) !important;
+	opacity: 0.7;
+	margin: 0 0.5rem;
+}
+
+.cart-banner-title {
+	font-family: var(--font-heading);
+	font-size: clamp(2.5rem, 5vw, 4rem);
+	color: var(--color-white);
+	margin: 0;
+	font-weight: 700;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	letter-spacing: 0.02em;
+}
+
+.cart-banner-subheading {
+	font-family: var(--font-body);
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	color: var(--color-white);
+	margin: 0;
+	opacity: 0.95;
+	font-weight: 400;
+	letter-spacing: 0.01em;
+}
+
+@media (max-width: 767px) {
+	.cart-banner {
+		padding: var(--spacing-lg) var(--container-padding);
+		margin-bottom: var(--spacing-lg);
+		margin-top: 0;
+	}
+	
+	.cart-banner-title {
+		font-size: clamp(2rem, 6vw, 3rem);
+	}
+	
+	.site-main:has(.cart-banner) {
+		padding-top: 0 !important;
+	}
+}
+
+/* Hide page title on cart page */
+body.woocommerce-cart .page-title,
+body.woocommerce-cart .page-header,
+body.woocommerce-cart .page-header .page-title,
+.woocommerce-cart .page-title,
+.woocommerce-cart .page-header {
+	display: none !important;
+}
+
+/* Hide WooCommerce post title block on cart page */
+body.woocommerce-cart .wp-block-post-title,
+.woocommerce-cart .wp-block-post-title {
+	display: none !important;
+}
+
+/* ============================================
    Classic Cart
    ============================================ */
 
@@ -534,6 +660,11 @@
 	display: flex;
 	gap: var(--spacing-xl);
 	align-items: flex-start;
+}
+
+/* Add padding above filled cart block */
+.wc-block-components-sidebar-layout.wc-block-cart.wp-block-woocommerce-filled-cart-block.is-large {
+	padding-top: var(--spacing-lg);
 }
 
 .wc-block-components-sidebar-layout .wc-block-components-main {
